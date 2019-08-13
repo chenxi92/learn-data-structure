@@ -11,8 +11,7 @@
 
 #### 动图演示
 
-![insertionSort](./image/sort/insertionSort.gif)
-
+![动图演示](/image/sort/insertionSort.gif)
 
 
 ### 代码实现
