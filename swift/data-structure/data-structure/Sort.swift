@@ -62,7 +62,9 @@ class Sort {
     }
     
     /// - 来源: https://github.com/raywenderlich/swift-algorithm-club/blob/master/Merge%20Sort/README.markdown
-    // Top-down implementation
+    /// - https://www.cnblogs.com/nullzx/p/5968170.html
+    
+    // 自顶向下实现
     func mergeSortTopDown<T: Comparable>(_ array: [T]) -> [T] {
         // 1 退出递归条件
         guard array.count > 1 else { return array }
@@ -114,20 +116,17 @@ class Sort {
     }
     
     // Bottom-up implementation
-    func mergeSortBottomUp<T>(_ a: [T], _ isOrderedBofore: (T, T) -> Bool) -> [T] {
+    func mergeSortBottomUp<T>(_ a: [T], _ isOrderedBefore: (T, T) -> Bool) -> [T] {
         let n = a.count
         
-        // 1
-        var z = [a, a]
+        var z = [a, a]      // 1
         var d = 0
         
-        // 2
         var width = 1
-        while width < n {
+        while width < n {   // 2
             
-            // 3
             var i = 0
-            while i < n {
+            while i < n {     // 3
                 
                 var j = i
                 var l = i
@@ -136,9 +135,8 @@ class Sort {
                 let lmax = min(l + width, n)
                 let rmax = min(r + width, n)
                 
-                // 4
-                while l < lmax && r < rmax {
-                    if isOrderedBofore(z[d][l], z[d][r]) {
+                while l < lmax && r < rmax {                // 4
+                    if isOrderedBefore(z[d][l], z[d][r]) {
                         z[1 - d][j] = z[d][l]
                         l += 1
                     } else {
@@ -147,15 +145,13 @@ class Sort {
                     }
                     j += 1
                 }
-                
                 while l < lmax {
                     z[1 - d][j] = z[d][l]
                     j += 1
                     l += 1
                 }
-                
                 while r < rmax {
-                    z[1 - d][j] = z[d][j]
+                    z[1 - d][j] = z[d][r]
                     j += 1
                     r += 1
                 }
@@ -164,10 +160,8 @@ class Sort {
             }
             
             width *= 2
-            d = 1 - d
+            d = 1 - d      // 5
         }
-        
         return z[d]
     }
-    
 }

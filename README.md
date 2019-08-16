@@ -5,5 +5,5 @@
 
 [插入排序](./doc/sort/insertion-sort.md)
 
-[合并排序](./doc/sort/merge-sort.md)
+[归并排序](./doc/sort/merge-sort.md)
 

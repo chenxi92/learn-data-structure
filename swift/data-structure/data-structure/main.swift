@@ -55,7 +55,7 @@ let mergeNumbers = [1, 7, 8, 3, 6, 9]
 print("top-down begin merge: ", mergeNumbers)
 print("top-down after merge: ", s.mergeSortTopDown(mergeNumbers))
 
-let array = [2, 1, 5, 4, 9]
+let array = [4, 2, 1, 5, 7, 6, 3]
 print("bottom-up begin merge: ", array)
 print("bottom-up after merge: ", s.mergeSortBottomUp(array, <))
 
