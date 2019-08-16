@@ -71,5 +71,6 @@ fastlane/test_output
 ## **.xcworkspacedata
 
 **/project.xcworkspace/**
+.DS_Store
 
 
