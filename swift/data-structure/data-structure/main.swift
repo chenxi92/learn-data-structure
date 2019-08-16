@@ -60,3 +60,7 @@ print("bottom-up begin merge: ", array)
 print("bottom-up after merge: ", s.mergeSortBottomUp(array, <))
 
 
+let countArray = [10, 9, 8, 7, 1, 2, 7, 3]
+var result = s.countingSort(countArray)
+print("\ncounting sort begin: ", countArray)
+print("counting sort end: ", result)
