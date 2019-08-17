@@ -64,3 +64,13 @@ let countArray = [10, 9, 8, 7, 1, 2, 7, 3]
 var result = s.countingSort(countArray)
 print("\ncounting sort begin: ", countArray)
 print("counting sort end: ", result)
+
+var bubbleArrtay = [5, 1, 4, 2, 8]
+result = s.bubbleSort(array: &bubbleArrtay, >)
+print("\nbubble sort begin: ", bubbleArrtay)
+print("bubble sort end: ", result)
+
+var selectionArray = [ 10, -1, 3, 9, 2, 27, 8, 5, 1, 3, 0, 26 ]
+result = s.selectionSort(array: &selectionArray, <)
+print("\nselection sort begin: ", selectionArray)
+print("selection sort end: ", result)

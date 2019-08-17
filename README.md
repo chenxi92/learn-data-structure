@@ -1,7 +1,10 @@
-
 # 数据结构学习
 
 #### 排序
+
+[冒泡排序](./doc/sort/bubble-sort.md)
+
+[选择排序](./doc/sort/select-sort.md)
 
 [插入排序](./doc/sort/insertion-sort.md)
 

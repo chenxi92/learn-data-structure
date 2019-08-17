@@ -188,4 +188,46 @@ class Sort {
         
         return sortedArray
     }
+    
+    /// 冒泡排序
+    ///
+    /// - Parameters:
+    ///   - array: 待排序数组
+    ///   - isOrderdBefore: 排序条件
+    /// - Returns: 已经排序数组
+    func bubbleSort<T: Comparable>(array: inout [T], _ isOrderdBefore:(T, T) -> Bool) -> [T] {
+        for i in 0 ..< array.count {
+            for j in 1 ..< array.count - i {
+                if isOrderdBefore(array[j], array[j - 1]) {
+                    array.swapAt(j, j - 1)
+                }
+            }
+        }
+        return array
+    }
+    
+    
+    /// 选择排序
+    ///
+    /// - Parameters:
+    ///   - array: 待排序数组
+    ///   - isOrderedBefore: 排序条件
+    /// - Returns: 已经排序数组
+    func selectionSort<T: Comparable>(array: inout [T], _ isOrderedBefore: (T, T) -> Bool) -> [T] {
+        guard array.count > 1 else { return array }
+        
+        for x in 0 ..< array.count {
+            var position = x
+            for y in x + 1 ..< a.count {
+                if isOrderedBefore(array[y], array[x]) {
+                    position = y
+                }
+            }
+            if x != position {
+                array.swapAt(x, position)
+            }
+        }
+        
+        return array
+    }
 }

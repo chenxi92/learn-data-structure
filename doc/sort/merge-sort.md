@@ -168,7 +168,7 @@ func mergeSortBottomUp<T>(_ a: [T], _ isOrderedBefore: (T, T) -> Bool) -> [T] {
 3. 内部的 while 循环把每一对小的有序数组合并一个较大的有序数组， 从 `z[d]` 内读取数据， 写入到 `z[1-d]` 中。
 4. 调整需要合并的元素的个数， 调换数组读写顺序。
 
-#### 参考链接
+### 参考链接
 
 - [十大经典排序算法](https://github.com/hustcc/JS-Sorting-Algorithm)
 - [归并排序](https://www.cnblogs.com/nullzx/p/5968170.html)
