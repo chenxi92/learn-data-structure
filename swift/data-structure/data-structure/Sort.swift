@@ -230,4 +230,21 @@ class Sort {
         
         return array
     }
+    
+    func shellsort<T : Comparable>(seq: inout [T], _ isOrderedBeofre:(T, T) -> Bool) {
+        var gap = seq.count / 2
+        while gap > 0 {
+            for (var i, element) in seq.enumerated() {
+                while i >= gap && isOrderedBeofre(element, seq[i - gap]) {
+                    seq.swapAt(i, i - gap)
+                    i -= gap
+                }
+            }
+            if gap == 2 {
+                gap = 1
+            } else {
+                gap = gap * 5 / 11
+            }
+        }
+    }
 }

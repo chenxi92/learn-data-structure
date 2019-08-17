@@ -66,9 +66,9 @@
 			isa = PBXGroup;
 			children = (
 				1520CF9B2302DC7000C60F3A /* main.swift */,
+				1520CFA42302DCA000C60F3A /* Sort.swift */,
 				1520CFA22302DCA000C60F3A /* Queue.swift */,
 				1520CFA32302DCA000C60F3A /* Search.swift */,
-				1520CFA42302DCA000C60F3A /* Sort.swift */,
 				1520CFA52302DCA000C60F3A /* Stack.swift */,
 			);
 			path = "data-structure";

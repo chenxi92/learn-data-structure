@@ -74,3 +74,14 @@ var selectionArray = [ 10, -1, 3, 9, 2, 27, 8, 5, 1, 3, 0, 26 ]
 result = s.selectionSort(array: &selectionArray, <)
 print("\nselection sort begin: ", selectionArray)
 print("selection sort end: ", result)
+
+var shellArray = [22, 7, 2, -5, 8, 4, 7]
+print("\nshell sort begin: ", shellArray)
+s.shellsort(seq: &shellArray, >)
+print("shell sort end: ", shellArray)
+
+
+var arr = [64, 20, 50, 33, 72, 10, 23, -1, 4, 5, 33]
+print("\nshell sort begin: ", arr)
+s.shellsort(seq: &arr, >)
+print("shell sort end", arr)

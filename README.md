@@ -8,6 +8,8 @@
 
 [插入排序](./doc/sort/insertion-sort.md)
 
+[希尔排序](./doc/sort/shell-sort.md)
+
 [归并排序](./doc/sort/merge-sort.md)
 
 [计数排序](./doc/sort/counting-sort.md)
