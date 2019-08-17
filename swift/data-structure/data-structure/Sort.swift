@@ -231,6 +231,12 @@ class Sort {
         return array
     }
     
+    
+    /// 希尔排序
+    ///
+    /// - Parameters:
+    ///   - seq: 待排序数组
+    ///   - isOrderedBeofre: 排序条件
     func shellsort<T : Comparable>(seq: inout [T], _ isOrderedBeofre:(T, T) -> Bool) {
         var gap = seq.count / 2
         while gap > 0 {
@@ -247,4 +253,65 @@ class Sort {
             }
         }
     }
+    
+    func quicksort<T: Comparable>(_ a: [T]) -> [T] {
+        guard a.count > 1 else { return a }
+        
+        let pivot = a[a.count/2]
+        let less = a.filter {$0 < pivot }
+        let equal = a.filter {$0 == pivot }
+        let greater = a.filter {$0 > pivot }
+        return quicksort(less) + equal + quicksort(greater)
+    }
+    
+    func partitionLomuto<T: Comparable>(_ a: inout [T], low: Int, high: Int) -> Int {
+        let pivot = a[high]
+        var pivotIndex = low
+        for j in low ..< high {
+            if a[j] <= pivot {
+                (a[pivotIndex], a[j]) = (a[j], a[pivotIndex])
+                pivotIndex += 1
+            }
+        }
+        (a[pivotIndex], a[high]) = (a[high], a[pivotIndex])
+        return pivotIndex
+    }
+    
+    func quicksortLomuto<T: Comparable>(_ a: inout [T], low: Int, high: Int) {
+        if low < high {
+            let p = partitionLomuto(&a, low: low, high: high)
+            quicksortLomuto(&a, low: low, high: p - 1)
+            quicksortLomuto(&a, low: p + 1, high: high)
+        }
+    }
+    
+    
+    /// 快速排序
+    ///
+    /// - Parameters:
+    ///   - array: 待排序数组
+    ///   - isReverse: 是否颠倒排序，true 倒序， false 正xu
+    /// - Returns: 排序之后数组
+    func quickSort<T: Comparable>(_ array: [T], _ isReverse: Bool) -> [T] {
+        guard array.count > 1 else { return array }
+        
+        var left = [T]()
+        var right = [T]()
+        var middle = [T]()
+        let pivot = array.randomElement()!
+        for item in array {
+            if item == pivot {
+                middle.append(item)
+            } else if item < pivot {
+                left.append(item)
+            } else {
+                right.append(item)
+            }
+        }
+        if isReverse {
+            return quickSort(right, isReverse) + middle + quickSort(left, isReverse)
+        }
+        return quickSort(left, isReverse) + middle + quickSort(right, isReverse)
+    }
+    
 }

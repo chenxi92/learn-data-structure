@@ -12,6 +12,8 @@
 
 [归并排序](./doc/sort/merge-sort.md)
 
+[快速排序](./doc/sort/quick-sort.md)
+
 [计数排序](./doc/sort/counting-sort.md)
 
 

@@ -85,3 +85,14 @@ var arr = [64, 20, 50, 33, 72, 10, 23, -1, 4, 5, 33]
 print("\nshell sort begin: ", arr)
 s.shellsort(seq: &arr, >)
 print("shell sort end", arr)
+
+var quickArray = [ 10, 0, 3, 9, 2, 14, 26, 27, 1, 5, 8, -1, 8 ]
+print("\nquick sort begin: ", quickArray)
+s.quicksortLomuto(&quickArray, low: 0, high: quickArray.count - 1)
+print("quick sort end: ", quickArray)
+
+quickArray = [9, 8, 7, 6, 5, 4, 3, 2, 1, 1, 0]
+print("\nquick sort begin: ", quickArray)
+result = s.quickSort(quickArray, true)
+print("quick sort end: ", result)
+
