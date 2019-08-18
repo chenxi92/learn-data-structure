@@ -103,3 +103,7 @@ print("\nheap sort begin: ", heapArray)
 s.heapSort(&heapArray, <)
 print("heap sort end: ", heapArray)
 
+var bucketArray = [29, 25, 3, 49, 9, 37, 21, 43]
+print("\nbucket sort begin: ", bucketArray)
+s.bucketSort(&bucketArray, 10)
+print("bucket sort end: ", bucketArray)

@@ -16,6 +16,8 @@
 
 [堆排序](./doc/sort/heap-sort.md)
 
+[桶排序](./doc/sort/bucket-sort.md)
+
 [计数排序](./doc/sort/counting-sort.md)
 
 
