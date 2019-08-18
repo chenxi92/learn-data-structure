@@ -14,6 +14,8 @@
 
 [快速排序](./doc/sort/quick-sort.md)
 
+[堆排序](./doc/sort/heap-sort.md)
+
 [计数排序](./doc/sort/counting-sort.md)
 
 

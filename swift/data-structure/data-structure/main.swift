@@ -96,3 +96,10 @@ print("\nquick sort begin: ", quickArray)
 result = s.quickSort(quickArray, true)
 print("quick sort end: ", result)
 
+
+var heapArray = [-1, 5, 2, 6, 0, 3, 9 ,1, 7, 4]
+//heapArray = [4, 1, 3, 2, 16, 9,9, 10, 14, 8, 7]
+print("\nheap sort begin: ", heapArray)
+s.heapSort(&heapArray, <)
+print("heap sort end: ", heapArray)
+
