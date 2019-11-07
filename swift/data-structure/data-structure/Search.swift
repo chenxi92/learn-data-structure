@@ -29,7 +29,7 @@ class Search {
             
             if a[midIndex] > key {
                 return binarySearch(a, key: key, range: range.lowerBound ..< midIndex)
-            } else if a[midIndex] > key {
+            } else if a[midIndex] < key {
                 return binarySearch(a, key: key, range: midIndex + 1 ..< range.upperBound)
             } else {
                 return midIndex
@@ -64,4 +64,34 @@ class Search {
         return nil
     }
     
+    func countOccurrences<T: Comparable>(of key: T, in array: [T]) -> Int {
+        var leftBoundary: Int {
+            var low = 0
+            var high = array.count
+            while low < high {
+                let midIndex = low + (high - low)/2
+                if array[midIndex] < key {
+                    low = midIndex + 1
+                } else {
+                    high = midIndex
+                }
+            }
+            return low
+        }
+
+        var rightBoundary: Int {
+            var low = 0
+            var high = array.count
+            while low < high {
+                let midIndex = low + (high - low)/2
+                if array[midIndex] > key {
+                    high = midIndex
+                } else {
+                    low = midIndex + 1
+                }
+            }
+            return low
+        }
+        return rightBoundary - leftBoundary
+    }
 }
