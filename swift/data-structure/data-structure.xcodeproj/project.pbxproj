@@ -12,6 +12,7 @@
 		1520CFA72302DCA000C60F3A /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1520CFA32302DCA000C60F3A /* Search.swift */; };
 		1520CFA82302DCA000C60F3A /* Sort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1520CFA42302DCA000C60F3A /* Sort.swift */; };
 		1520CFA92302DCA000C60F3A /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1520CFA52302DCA000C60F3A /* Stack.swift */; };
+		15A9B4D724A08FDB00B6EA6F /* SleepSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A9B4D624A08FDB00B6EA6F /* SleepSort.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,6 +34,7 @@
 		1520CFA32302DCA000C60F3A /* Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		1520CFA42302DCA000C60F3A /* Sort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sort.swift; sourceTree = "<group>"; };
 		1520CFA52302DCA000C60F3A /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
+		15A9B4D624A08FDB00B6EA6F /* SleepSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepSort.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 				1520CFA22302DCA000C60F3A /* Queue.swift */,
 				1520CFA32302DCA000C60F3A /* Search.swift */,
 				1520CFA52302DCA000C60F3A /* Stack.swift */,
+				15A9B4D624A08FDB00B6EA6F /* SleepSort.swift */,
 			);
 			path = "data-structure";
 			sourceTree = "<group>";
@@ -132,6 +135,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1520CFA72302DCA000C60F3A /* Search.swift in Sources */,
+				15A9B4D724A08FDB00B6EA6F /* SleepSort.swift in Sources */,
 				1520CFA92302DCA000C60F3A /* Stack.swift in Sources */,
 				1520CFA82302DCA000C60F3A /* Sort.swift in Sources */,
 				1520CF9C2302DC7000C60F3A /* main.swift in Sources */,

@@ -111,3 +111,7 @@ print("bucket sort end: ", bucketArray)
 let sear = Search()
 let a1 = [ 0, 1, 1, 3, 3, 3, 3, 6, 8, 10, 11, 11 ]
 print("count = ", sear.countOccurrences(of: 2, in: a1))
+
+let sleepArray = [5, 2, 3]
+print("sleep sort: ", sleepArray.sleepSorted());
+
