@@ -72,5 +72,5 @@ fastlane/test_output
 
 **/project.xcworkspace/**
 .DS_Store
-
+swift/data-structure/data-structure.xcodeproj/xcshareddata/**
 
