@@ -8,7 +8,7 @@
 
 import Foundation
 
-// https://sarunw.com/posts/sleep-sort-sorting-algorithm-without-compare
+// Inspire from https://sarunw.com/posts/sleep-sort-sorting-algorithm-without-compare
 
 extension Array where Element == Int {
     func sleepSorted() -> [Element] {

@@ -126,3 +126,71 @@ cache.setValue("Twenty", for: 20)
 
 print(cache.getValue(for: 1) ?? "null" )
 print(cache.getValue(for: 11)! )
+
+
+func testTreeNode() {
+    let tree = TreeNode<String>(value: "beverages")
+    
+    let hotNode = TreeNode<String>(value: "hot")
+    let coldNode = TreeNode<String>(value: "cold")
+    
+    let teaNode = TreeNode<String>(value: "tea")
+    let coffeeNode = TreeNode<String>(value: "coffee")
+    let chocolateNode = TreeNode<String>(value: "cocoa")
+    
+    let blackNode = TreeNode<String>(value: "black")
+    let greenTeaNode = TreeNode<String>(value: "green")
+    let chaiTeaNode = TreeNode<String>(value: "chai")
+    
+    let sodaNode = TreeNode<String>(value: "soda")
+    let milkNode = TreeNode<String>(value: "milk")
+    
+    let gingerAleNode = TreeNode<String>(value: "ginger ale")
+    let bitterLemonNode = TreeNode<String>(value: "bitter lemon")
+    
+    tree.addChild(hotNode)
+    tree.addChild(coldNode)
+    
+    hotNode.addChild(teaNode)
+    hotNode.addChild(coffeeNode)
+    hotNode.addChild(chocolateNode)
+    
+    coldNode.addChild(sodaNode)
+    coldNode.addChild(milkNode)
+    
+    teaNode.addChild(blackNode)
+    teaNode.addChild(greenTeaNode)
+    teaNode.addChild(chaiTeaNode)
+    
+    sodaNode.addChild(gingerAleNode)
+    sodaNode.addChild(bitterLemonNode)
+    
+    print(String(describing: tree))
+    
+    print(String(describing: tree.search("cocoa")))
+    print(String(describing: tree.search("bubbly")))
+}
+
+testTreeNode()
+
+func testBinarySearchTree() {
+    let tree = BinarySearchTree<Int>(array: [7, 2, 5, 10 , 9 ,1])
+    
+    print(String(describing: tree))
+    
+    print(tree.count)
+    
+    print(String(describing: tree.search(2)))
+    print(String(describing: tree.searchUseLoop(2)))
+    
+    print(String(describing: tree.search(21)))
+    print(String(describing: tree.searchUseLoop(21)))
+    
+    tree.traversePreOrder { (value) in
+        print(value)
+    }
+}
+
+testBinarySearchTree()
+
+print(safeEqual("abc", "ab"))

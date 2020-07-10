@@ -14,6 +14,9 @@
 		1520CFA92302DCA000C60F3A /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1520CFA52302DCA000C60F3A /* Stack.swift */; };
 		159ADBBE24AC92BE0016ED30 /* LRUCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159ADBBD24AC92BE0016ED30 /* LRUCache.swift */; };
 		15A9B4D724A08FDB00B6EA6F /* SleepSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A9B4D624A08FDB00B6EA6F /* SleepSort.swift */; };
+		15DDAF9424B5E8BC00285173 /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DDAF9324B5E8BC00285173 /* Tree.swift */; };
+		15DDAF9624B6B2AC00285173 /* BinarySearchTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DDAF9524B6B2AC00285173 /* BinarySearchTree.swift */; };
+		15DDAF9824B72C7500285173 /* SafeEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DDAF9724B72C7500285173 /* SafeEqual.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,6 +40,9 @@
 		1520CFA52302DCA000C60F3A /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		159ADBBD24AC92BE0016ED30 /* LRUCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LRUCache.swift; sourceTree = "<group>"; };
 		15A9B4D624A08FDB00B6EA6F /* SleepSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepSort.swift; sourceTree = "<group>"; };
+		15DDAF9324B5E8BC00285173 /* Tree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
+		15DDAF9524B6B2AC00285173 /* BinarySearchTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinarySearchTree.swift; sourceTree = "<group>"; };
+		15DDAF9724B72C7500285173 /* SafeEqual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeEqual.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +82,9 @@
 				1520CFA52302DCA000C60F3A /* Stack.swift */,
 				15A9B4D624A08FDB00B6EA6F /* SleepSort.swift */,
 				159ADBBD24AC92BE0016ED30 /* LRUCache.swift */,
+				15DDAF9324B5E8BC00285173 /* Tree.swift */,
+				15DDAF9524B6B2AC00285173 /* BinarySearchTree.swift */,
+				15DDAF9724B72C7500285173 /* SafeEqual.swift */,
 			);
 			path = "data-structure";
 			sourceTree = "<group>";
@@ -140,8 +149,11 @@
 				1520CFA72302DCA000C60F3A /* Search.swift in Sources */,
 				15A9B4D724A08FDB00B6EA6F /* SleepSort.swift in Sources */,
 				1520CFA92302DCA000C60F3A /* Stack.swift in Sources */,
+				15DDAF9824B72C7500285173 /* SafeEqual.swift in Sources */,
 				1520CFA82302DCA000C60F3A /* Sort.swift in Sources */,
 				159ADBBE24AC92BE0016ED30 /* LRUCache.swift in Sources */,
+				15DDAF9624B6B2AC00285173 /* BinarySearchTree.swift in Sources */,
+				15DDAF9424B5E8BC00285173 /* Tree.swift in Sources */,
 				1520CF9C2302DC7000C60F3A /* main.swift in Sources */,
 				1520CFA62302DCA000C60F3A /* Queue.swift in Sources */,
 			);
