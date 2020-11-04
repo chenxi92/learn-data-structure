@@ -194,3 +194,16 @@ func testBinarySearchTree() {
 testBinarySearchTree()
 
 print(safeEqual("abc", "ab"))
+
+func testHeapSort() {
+    for _ in 0 ... 30 {
+        let max = Tool.RandomInt(100)
+        let array = Tool.RandomArray(0, max, 25)
+        print("origin array", array)
+        let ordered = Tool.IsOrdered(heapSort.Sort(array))
+        assert(ordered, "sort was valid")
+    }
+}
+
+print("\n--- begin test heap sort")
+testHeapSort()
