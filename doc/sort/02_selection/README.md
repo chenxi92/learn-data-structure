@@ -3,35 +3,36 @@
 
 ### 算法步骤
 
-1. 首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置。
-2. 然后，再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。
-3. 以此类推，直到所有元素均排序完毕
+1. 首先在数组中找到最小（大）元素，放到数组的起始位置；
+2. 从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序数组的末尾；
+3. 以此类推直到所有元素排序完毕。
 
 ### 动图演示
 
-![选择排序](./../../image/sort/selectionSort.gif)
+![选择排序](./images/selectionSort.gif)
 
 ### 代码实现
 
 #### swift
 
-`swift` 版本 `5.1`
+`swift` 版本 `5`
 
 ```swift
 /// 选择排序
 ///
 /// - Parameters:
 ///   - array: 待排序数组
-///   - isOrderedBefore: 排序条件
+///   - orderCriteria: 排序条件
 /// - Returns: 已经排序数组
-func selectionSort<T: Comparable>(array: inout [T], _ isOrderedBefore: (T, T) -> Bool) -> [T] {
+static func Sort<T: Comparable>(array: inout [T], _ orderCriteria: (T, T) -> Bool) -> [T] 
+{
     guard array.count > 1 else { return array }
-
-    for x in 0 ..< array.count {
-      	// 每次循环找到最大或者最小的元素的位置
+    let end = array.count
+    for x in 0 ..< end {
+        // 每一轮找到 最小/大 元素的下标
         var position = x
-        for y in x + 1 ..< a.count {
-            if isOrderedBefore(array[y], array[x]) {
+        for y in x + 1 ..< end {
+            if orderCriteria(array[y], array[position]) {
                 position = y
             }
         }
@@ -39,7 +40,6 @@ func selectionSort<T: Comparable>(array: inout [T], _ isOrderedBefore: (T, T) ->
             array.swapAt(x, position)
         }
     }
-
     return array
 }
 ```

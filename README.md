@@ -2,11 +2,11 @@
 
 #### 排序
 
-[冒泡排序](./doc/sort/bubble-sort.md)
+[1. 冒泡排序](./doc/sort/01_bubble/README.md)
 
-[选择排序](./doc/sort/select-sort.md)
+[2. 选择排序](./doc/sort/02_selection/README.md)
 
-[插入排序](./doc/sort/insertion-sort.md)
+[3. 插入排序](./doc/sort/03_insertion/README.md)
 
 [希尔排序](./doc/sort/shell-sort.md)
 

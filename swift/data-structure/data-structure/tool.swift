@@ -20,16 +20,29 @@ class Tool {
         return array
     }
 
-    static public func IsOrdered(_ array: [Int]) -> Bool {
-        var order = true
+    static public func IsAscend(_ array: [Int]) -> Bool {
+        var ordered = true
         for (index, value) in array.enumerated() {
-            if index < array.count - 1 {
+            if index + 1 < array.count {
                 if (value > array[index + 1]) {
-                    order = false
+                    ordered = false
                     break
                 }
             }
         }
-        return order
+        return ordered
+    }
+    
+    static public func IsDescend(_ array: [Int]) -> Bool {
+        var ordered = true
+        for (index, value) in array.enumerated() {
+            if index < array.count - 1 {
+                if (value < array[index + 1]) {
+                    ordered = false
+                    break
+                }
+            }
+        }
+        return ordered
     }
 }

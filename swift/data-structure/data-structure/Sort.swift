@@ -193,38 +193,31 @@ class Sort {
     ///
     /// - Parameters:
     ///   - array: 待排序数组
-    ///   - isOrderdBefore: 排序条件
+    ///   - orderCriteria: 排序条件
     /// - Returns: 已经排序数组
-    func bubbleSort<T: Comparable>(array: inout [T], _ isOrderdBefore:(T, T) -> Bool) -> [T] {
-        for i in 0 ..< array.count {
-            for j in 1 ..< array.count - i {
-                if isOrderdBefore(array[j], array[j - 1]) {
-                    array.swapAt(j, j - 1)
+    static func BubbleSort<T: Comparable>(array: inout [T], _ orderCriteria:(T, T) -> Bool) -> [T] {
+        for end in stride(from: array.count - 1, through: 1, by: -1) {
+            for begin in 1 ... end {
+                if orderCriteria(array[begin], array[begin - 1]) {
+                    array.swapAt(begin, begin - 1)
                 }
             }
         }
+        
         return array
     }
     
-    
-    /// 选择排序
-    ///
-    /// - Parameters:
-    ///   - array: 待排序数组
-    ///   - isOrderedBefore: 排序条件
-    /// - Returns: 已经排序数组
-    func selectionSort<T: Comparable>(array: inout [T], _ isOrderedBefore: (T, T) -> Bool) -> [T] {
-        guard array.count > 1 else { return array }
-        
-        for x in 0 ..< array.count {
-            var position = x
-            for y in x + 1 ..< a.count {
-                if isOrderedBefore(array[y], array[x]) {
-                    position = y
+    static func BubbleSort1<T: Comparable>(array: inout [T], _ orderCriteria:(T, T) -> Bool) -> [T] {
+        for end in stride(from: array.count - 1, through: 1, by: -1) {
+            var sorted = true
+            for begin in 1 ... end {
+                if orderCriteria(array[begin], array[begin - 1]) {
+                    array.swapAt(begin, begin - 1)
+                    sorted = false
                 }
             }
-            if x != position {
-                array.swapAt(x, position)
+            if sorted {
+                break
             }
         }
         

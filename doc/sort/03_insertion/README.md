@@ -2,12 +2,12 @@
 
 1. 把数组第一个元素当做有序部分， 把第二个元素到最后一个元素当做无序部分；
 2. 从头到尾遍历无序部分，将扫描到的每一个元素插入到有序部分的适当位置；
-3. 重复步骤2，知道无序部分为空。
+3. 重复步骤2，直到无序部分为空。
 
 
 #### 动图演示
 
-![动图演示](./../../image/sort/insertionSort.gif)
+![动图演示](./images/insertionSort.gif)
 
 
 #### 代码实现
@@ -16,31 +16,26 @@
 
 #### swift
 
-`Swift`  版本 `5.1` 
+`Swift`  版本 `5` 
 
 ```swift
-import Foundation
-
-/// 插入排序
-///
-/// - Parameters:
-///   - array: 待排序数组
-///   - isOrderdBefore: 排序方法
-/// - Returns: 已经排序数组
-func insertionSort<T>(_ array: [T], _ isOrderdBefore: (T, T) -> Bool) -> [T] {
-        var a = array
-        for x in 1 ..< a.count {
-            var y = x
-            let temp = a[y]
-            while y > 0 && isOrderdBefore(temp, a[y - 1]) {
-                a[y] = a[y - 1]
-                y -= 1
-            }
-            a[y] = temp
-        }
-        
-        return a
+static func Sort<T: Comparable>(array: inout [T], _ orderCriteria: (T, T) -> Bool) -> [T]  
+{
+    guard array.count > 1 else {
+        return array
     }
+    let end = array.count
+    for x in 1 ..< end {
+        var y = x
+        while y > 0 {
+            if orderCriteria(array[y], array[y - 1]) {
+                array.swapAt(y, y - 1)
+            }
+            y -= 1
+        }
+    }
+    return array
+}
 ```
 
 

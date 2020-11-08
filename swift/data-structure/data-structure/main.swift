@@ -18,37 +18,14 @@ class Person {
     }
 }
 
+Bubble.Test()
+Selection.Test()
+Insertion.Test()
+
 
 var s = Sort()
 
 let numbers = [ 10, -1, 3, 9, 2, 27, 8, 5, 1, 3, 0, 26 ]
-
-let a = s.insertionSort2(numbers)
-print("after sort: ", a)
-
-let b = s.insertionSort(numbers, <)
-print("after < sort: ", b)
-
-let c = s.insertionSort(numbers, >)
-print("after > sort: ", c)
-
-let p1 = Person("chenxi1", 11)
-let p2 = Person("chenxi2", 14)
-let p3 = Person("chenxi3", 11)
-let p4 = Person("chenxi4", 15)
-let persons = [p1, p2, p3, p4]
-let d = s.insertionSort(persons) {(p1: Person, p2: Person) in
-    if p1.age < p2.age {
-        return p1.age < p2.age
-    } else {
-        return p1.name < p1.name
-    }
-}
-
-for p in d {
-    print(p.name, p.age)
-}
-
 
 print("\nbegin test merge sort:")
 let mergeNumbers = [1, 7, 8, 3, 6, 9]
@@ -65,15 +42,7 @@ var result = s.countingSort(countArray)
 print("\ncounting sort begin: ", countArray)
 print("counting sort end: ", result)
 
-var bubbleArrtay = [5, 1, 4, 2, 8]
-result = s.bubbleSort(array: &bubbleArrtay, >)
-print("\nbubble sort begin: ", bubbleArrtay)
-print("bubble sort end: ", result)
 
-var selectionArray = [ 10, -1, 3, 9, 2, 27, 8, 5, 1, 3, 0, 26 ]
-result = s.selectionSort(array: &selectionArray, <)
-print("\nselection sort begin: ", selectionArray)
-print("selection sort end: ", result)
 
 var shellArray = [22, 7, 2, -5, 8, 4, 7]
 print("\nshell sort begin: ", shellArray)
@@ -196,14 +165,14 @@ testBinarySearchTree()
 print(safeEqual("abc", "ab"))
 
 func testHeapSort() {
+    print("\n---[Test begin] heap sort ---\n")
     for _ in 0 ... 30 {
-        let max = Tool.RandomInt(100)
+        let max = Tool.RandomInt(10000)
         let array = Tool.RandomArray(0, max, 25)
         print("origin array", array)
-        let ordered = Tool.IsOrdered(heapSort.Sort(array))
+        let ordered = Tool.IsAscend(heapSort.Sort(array))
         assert(ordered, "sort was valid")
     }
+    print("\n---[Test end] heap sort ---\n")
 }
-
-print("\n--- begin test heap sort")
 testHeapSort()
