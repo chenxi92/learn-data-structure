@@ -12,11 +12,11 @@
 
 ### 动图演示
 
-![堆排序](./../../image/sort/heapSort-1.gif)
+![堆排序](./images/heapSort-1.gif)
 
 
 
-![堆排序](./../../image/sort/heapSort-2.gif)
+![堆排序](./images/heapSort-2.gif)
 
 
 ### 代码实现

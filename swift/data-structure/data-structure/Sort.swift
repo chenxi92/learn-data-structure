@@ -225,28 +225,6 @@ class Sort {
     }
     
     
-    /// 希尔排序
-    ///
-    /// - Parameters:
-    ///   - seq: 待排序数组
-    ///   - isOrderedBeofre: 排序条件
-    func shellsort<T : Comparable>(seq: inout [T], _ isOrderedBeofre:(T, T) -> Bool) {
-        var gap = seq.count / 2
-        while gap > 0 {
-            for (var i, element) in seq.enumerated() {
-                while i >= gap && isOrderedBeofre(element, seq[i - gap]) {
-                    seq.swapAt(i, i - gap)
-                    i -= gap
-                }
-            }
-            if gap == 2 {
-                gap = 1
-            } else {
-                gap = gap * 5 / 11
-            }
-        }
-    }
-    
     func quicksort<T: Comparable>(_ a: [T]) -> [T] {
         guard a.count > 1 else { return a }
         

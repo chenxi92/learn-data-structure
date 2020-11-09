@@ -1,6 +1,8 @@
 
 
-**希尔排序**，也称**递减增量排序算法**，是[插入排序](https://zh.wikipedia.org/wiki/插入排序)的一种更高效的改进版本。希尔排序是非稳定排序算法。
+**希尔排序**，也称**递减增量排序算法**，是[插入排序](https://zh.wikipedia.org/wiki/插入排序)的一种更高效的改进版本，能够更大间隔的比较和交换元素。
+
+希尔排序是非稳定排序算法。
 
 希尔排序是基于插入排序的以下两点性质而提出改进方法的：
 
@@ -28,7 +30,7 @@
 
 ### 动图演示
 
-![希尔排序](./../../image/sort/shell-sorting.gif)
+![希尔排序](./images/shell-sorting.gif)
 
 
 
@@ -36,26 +38,31 @@
 
 #### swift
 
-`swift` 版本 `5.1`
+`swift` 版本 `5`
 
 ```swift
-func shellsort<T : Comparable>(seq: inout [T], _ isOrderedBeofre:(T, T) -> Bool) {
-    // 增量数列: 间隔序列最开始取数组的一半
-  	var gap = seq.count / 2
+static func Sort<T: Comparable>(array: inout [T], _ orderCriteria: (T, T) -> Bool) -> [T]
+{
+    guard array.count > 1 else {
+        return array
+    }
+    let count = array.count
+    var gap = count/3
     while gap > 0 {
-        for (var i, element) in seq.enumerated() {
-            while i >= gap && isOrderedBeofre(element, seq[i - gap]) {
-                seq.swapAt(i, i - gap) // 按间隔排序
-                i -= gap
+        for (i, element) in array.enumerated() {
+            var begin = i
+            while (begin >= gap) && orderCriteria(element, array[begin - gap]) {
+                array.swapAt(begin, begin - gap)
+                begin -= gap
             }
         }
-				// 定义间隔序列      
         if gap == 2 {
             gap = 1
         } else {
-            gap = gap * 5 / 11
+            gap /= 3
         }
     }
+    return array
 }
 ```
 

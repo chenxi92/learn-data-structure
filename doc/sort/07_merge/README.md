@@ -19,7 +19,7 @@ Merge Sort 由 [John von Neumann](https://en.wikipedia.org/wiki/John_von_Neumann
 
 ##### 动图演示
 
-![自顶向下](./../../image/sort/merge-sort-top-down.gif)
+![自顶向下](./images/merge-sort-top-down.gif)
 
 ##### 代码实现
 

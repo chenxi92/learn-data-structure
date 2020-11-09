@@ -17,11 +17,11 @@
 
 元素分布在桶中:
 
-![1](./../../image/sort/bucket_sort_1.png)
+![1](./images/bucket_sort_1.png)
 
 然后元素在每个桶中排序:
 
-![1](./../../image/sort/bucket_sort_2.png)
+![1](./images/bucket_sort_2.png)
 
 
 

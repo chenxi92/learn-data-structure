@@ -15,6 +15,8 @@
 		1536A3442558103C00E86996 /* bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1536A3432558103C00E86996 /* bubble.swift */; };
 		1536A3482558131800E86996 /* selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1536A3472558131800E86996 /* selection.swift */; };
 		1536A34B2558177900E86996 /* insertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1536A34A2558177900E86996 /* insertion.swift */; };
+		1536A34E255836A000E86996 /* shell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1536A34D255836A000E86996 /* shell.swift */; };
+		1536A3512558372F00E86996 /* quick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1536A3502558372F00E86996 /* quick.swift */; };
 		159ADBBE24AC92BE0016ED30 /* LRUCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159ADBBD24AC92BE0016ED30 /* LRUCache.swift */; };
 		15A9B4D724A08FDB00B6EA6F /* SleepSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A9B4D624A08FDB00B6EA6F /* SleepSort.swift */; };
 		15DDAF9424B5E8BC00285173 /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DDAF9324B5E8BC00285173 /* Tree.swift */; };
@@ -48,6 +50,8 @@
 		1536A3432558103C00E86996 /* bubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bubble.swift; sourceTree = "<group>"; };
 		1536A3472558131800E86996 /* selection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = selection.swift; sourceTree = "<group>"; };
 		1536A34A2558177900E86996 /* insertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = insertion.swift; sourceTree = "<group>"; };
+		1536A34D255836A000E86996 /* shell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shell.swift; sourceTree = "<group>"; };
+		1536A3502558372F00E86996 /* quick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = quick.swift; sourceTree = "<group>"; };
 		159ADBBD24AC92BE0016ED30 /* LRUCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LRUCache.swift; sourceTree = "<group>"; };
 		15A9B4D624A08FDB00B6EA6F /* SleepSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepSort.swift; sourceTree = "<group>"; };
 		15DDAF9324B5E8BC00285173 /* Tree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
@@ -113,6 +117,8 @@
 				1536A3432558103C00E86996 /* bubble.swift */,
 				1536A3472558131800E86996 /* selection.swift */,
 				1536A34A2558177900E86996 /* insertion.swift */,
+				1536A34D255836A000E86996 /* shell.swift */,
+				1536A3502558372F00E86996 /* quick.swift */,
 			);
 			path = sort;
 			sourceTree = "<group>";
@@ -184,6 +190,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1536A3512558372F00E86996 /* quick.swift in Sources */,
+				1536A34E255836A000E86996 /* shell.swift in Sources */,
 				1536A3482558131800E86996 /* selection.swift in Sources */,
 				1520CFA72302DCA000C60F3A /* Search.swift in Sources */,
 				15A9B4D724A08FDB00B6EA6F /* SleepSort.swift in Sources */,

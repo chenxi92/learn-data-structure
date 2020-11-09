@@ -21,6 +21,8 @@ class Person {
 Bubble.Test()
 Selection.Test()
 Insertion.Test()
+Shell.Test()
+//Quick.Test()
 
 
 var s = Sort()
@@ -42,18 +44,6 @@ var result = s.countingSort(countArray)
 print("\ncounting sort begin: ", countArray)
 print("counting sort end: ", result)
 
-
-
-var shellArray = [22, 7, 2, -5, 8, 4, 7]
-print("\nshell sort begin: ", shellArray)
-s.shellsort(seq: &shellArray, >)
-print("shell sort end: ", shellArray)
-
-
-var arr = [64, 20, 50, 33, 72, 10, 23, -1, 4, 5, 33]
-print("\nshell sort begin: ", arr)
-s.shellsort(seq: &arr, >)
-print("shell sort end", arr)
 
 var quickArray = [ 10, 0, 3, 9, 2, 14, 26, 27, 1, 5, 8, -1, 8 ]
 print("\nquick sort begin: ", quickArray)

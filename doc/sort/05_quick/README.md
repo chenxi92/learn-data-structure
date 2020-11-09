@@ -18,7 +18,9 @@
 
 ### 动图演示
 
-![快速排序](./../../image/sort/quickSort.gif)
+![快速排序](./images/quickSort.gif)
+
+
 
 ### 代码实现
 

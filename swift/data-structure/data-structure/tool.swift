@@ -14,8 +14,11 @@ class Tool {
     
     static public func RandomArray(_ min: Int, _ max: Int, _ count: Int) -> [Int] {
         var array = [Int]()
-        for _ in 0 ..< count {
-            array.append(Int.random(in: min...max))
+        while array.count < count {
+            let value = Int.random(in: min...max)
+            if array.firstIndex(of: value) == nil {
+                array.append(value)
+            }
         }
         return array
     }

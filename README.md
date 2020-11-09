@@ -8,16 +8,16 @@
 
 [3. 插入排序](./doc/sort/03_insertion/README.md)
 
-[希尔排序](./doc/sort/shell-sort.md)
+[4. 希尔排序](./doc/sort/04_shell/README.md)
 
-[归并排序](./doc/sort/merge-sort.md)
+[5. 快速排序](./doc/sort/05_quick/README.md)
 
-[快速排序](./doc/sort/quick-sort.md)
+[6. 堆排序](./doc/sort/06_heap/README.md)
 
-[堆排序](./doc/sort/heap-sort.md)
+[7. 归并排序](./doc/sort/07_merge/README.md)
 
-[桶排序](./doc/sort/bucket-sort.md)
+[8. 计数排序](./doc/sort/08_counting/README.md)
 
-[计数排序](./doc/sort/counting-sort.md)
+[9. 桶排序](./doc/sort/09_bucket/README.md)
 
 

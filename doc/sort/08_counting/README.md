@@ -13,7 +13,7 @@
 
 #### 动图演示
 
-![计数排序](./../../image/sort/countingSort.gif)
+![计数排序](./images/countingSort.gif)
 
 #### 代码实现
 
