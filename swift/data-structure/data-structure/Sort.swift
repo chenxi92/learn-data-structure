@@ -11,56 +11,6 @@ import Foundation
 
 class Sort {
     
-    func insertionSort1(_ array: [Int]) -> [Int] {
-        var a = array
-        for x in 1 ..< a.count {
-            var y = x
-            while y > 0 && a[y] < a[y - 1] {
-                a.swapAt(y-1, y)
-                y -= 1
-            }
-        }
-        return a
-    }
-    
-    func insertionSort2(_ array: [Int]) -> [Int] {
-        var a = array
-        for x in 1..<a.count {
-            var y = x
-            let temp = a[y]
-            while y > 0 && temp < a[y - 1] {
-                a[y] = a[y - 1]
-                y -= 1
-            }
-            a[y] = temp
-        }
-        return a
-    }
-    
-    /// 插入排序
-    ///
-    /// - Parameters:
-    ///   - array: 待排序数组
-    ///   - isOrderdBefore: 排序方法
-    /// - Returns: 已经排序数组
-    /// - 复杂度: 时间复杂度 O(n^2), 空间复杂度 O(1)
-    /// - 来源: https://en.wikipedia.org/wiki/Insertion_sort
-    /// - 维基百科: https://aquarchitect.github.io/swift-algorithm-club/Insertion%20Sort/
-    func insertionSort<T>(_ array: [T], _ isOrderdBefore: (T, T) -> Bool) -> [T] {
-        var a = array
-        for x in 1 ..< a.count {
-            var y = x
-            let temp = a[y]
-            while y > 0 && isOrderdBefore(temp, a[y - 1]) {
-                a[y] = a[y - 1]
-                y -= 1
-            }
-            a[y] = temp
-        }
-        
-        return a
-    }
-    
     /// - 来源: https://github.com/raywenderlich/swift-algorithm-club/blob/master/Merge%20Sort/README.markdown
     /// - https://www.cnblogs.com/nullzx/p/5968170.html
     
@@ -189,75 +139,6 @@ class Sort {
         return sortedArray
     }
     
-    /// 冒泡排序
-    ///
-    /// - Parameters:
-    ///   - array: 待排序数组
-    ///   - orderCriteria: 排序条件
-    /// - Returns: 已经排序数组
-    static func BubbleSort<T: Comparable>(array: inout [T], _ orderCriteria:(T, T) -> Bool) -> [T] {
-        for end in stride(from: array.count - 1, through: 1, by: -1) {
-            for begin in 1 ... end {
-                if orderCriteria(array[begin], array[begin - 1]) {
-                    array.swapAt(begin, begin - 1)
-                }
-            }
-        }
-        
-        return array
-    }
-    
-    static func BubbleSort1<T: Comparable>(array: inout [T], _ orderCriteria:(T, T) -> Bool) -> [T] {
-        for end in stride(from: array.count - 1, through: 1, by: -1) {
-            var sorted = true
-            for begin in 1 ... end {
-                if orderCriteria(array[begin], array[begin - 1]) {
-                    array.swapAt(begin, begin - 1)
-                    sorted = false
-                }
-            }
-            if sorted {
-                break
-            }
-        }
-        
-        return array
-    }
-    
-    
-    func quicksort<T: Comparable>(_ a: [T]) -> [T] {
-        guard a.count > 1 else { return a }
-        
-        let pivot = a[a.count/2]
-        let less = a.filter {$0 < pivot }
-        let equal = a.filter {$0 == pivot }
-        let greater = a.filter {$0 > pivot }
-        return quicksort(less) + equal + quicksort(greater)
-    }
-    
-    func partitionLomuto<T: Comparable>(_ a: inout [T], low: Int, high: Int) -> Int {
-        let pivot = a[high]
-        var pivotIndex = low
-        for j in low ..< high {
-            if a[j] <= pivot {
-                
-                (a[pivotIndex], a[j]) = (a[j], a[pivotIndex])
-                pivotIndex += 1
-            }
-        }
-        (a[pivotIndex], a[high]) = (a[high], a[pivotIndex])
-        return pivotIndex
-    }
-    
-    func quicksortLomuto<T: Comparable>(_ a: inout [T], low: Int, high: Int) {
-        if low < high {
-            let p = partitionLomuto(&a, low: low, high: high)
-            quicksortLomuto(&a, low: low, high: p - 1)
-            quicksortLomuto(&a, low: p + 1, high: high)
-        }
-    }
-   
-    
     
     /// 桶排序
     ///
@@ -280,10 +161,10 @@ class Sort {
         
         array.removeAll()
         for (_, value) in buckets.enumerated() {
-            let result = insertionSort(value, <)
-            for i in 0 ..< result.count {
-                array.append(result[i])
-            }
+//            let result = insertionSort(value, <)
+//            for i in 0 ..< result.count {
+//                array.append(result[i])
+//            }
         }
     }
 }

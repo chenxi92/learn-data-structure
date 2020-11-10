@@ -8,16 +8,6 @@
 
 import Foundation
 
-class Person {
-    var name: String
-    var age: Int
-    
-    init(_ name: String, _ age: Int) {
-        self.name = name
-        self.age = age
-    }
-}
-
 Bubble.Test()
 Selection.Test()
 Insertion.Test()
