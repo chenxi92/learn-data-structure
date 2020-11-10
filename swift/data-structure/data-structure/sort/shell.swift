@@ -34,9 +34,10 @@ class Shell {
         
     static func Test() {
         print("\nShell sort test begin")
-        let max = Int.random(in: 10...20)
+        let max = Int.random(in: 25...100)
         for _ in 0 ..< max {
-            var source = Tool.RandomArray(0, 30, 8)
+            let count = Int.random(in: 15...60)
+            var source = Tool.RandomArray(0, 100, count)
             let result = Shell.Sort(array: &source, <)
             if !Tool.IsAscend(result) {
                 print("shell sort source =\n", source)

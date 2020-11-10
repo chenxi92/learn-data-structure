@@ -32,9 +32,10 @@ class Selection {
     
     static func Test() {
         print("\nSelection sort test begin")
-        let max = Int.random(in: 10...20)
+        let max = Int.random(in: 25...100)
         for _ in 0 ..< max {
-            var source = Tool.RandomArray(0, 100, 20)
+            let count = Int.random(in: 15...60)
+            var source = Tool.RandomArray(0, 100, count)
             let result = Selection.Sort(array: &source, <)
             if !Tool.IsAscend(result) {
                 print("selection sort source = \n", source)

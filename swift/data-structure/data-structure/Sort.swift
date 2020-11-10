@@ -255,36 +255,6 @@ class Sort {
             quicksortLomuto(&a, low: p + 1, high: high)
         }
     }
-    
-    
-    /// 快速排序
-    ///
-    /// - Parameters:
-    ///   - array: 待排序数组
-    ///   - isReverse: 是否颠倒排序，true 倒序， false 正xu
-    /// - Returns: 排序之后数组
-    func quickSort<T: Comparable>(_ array: [T], _ isReverse: Bool) -> [T] {
-        guard array.count > 1 else { return array }
-        
-        var left = [T]()
-        var right = [T]()
-        var middle = [T]()
-        let pivot = array.randomElement()!
-        for item in array {
-            if item == pivot {
-                middle.append(item)
-            } else if item < pivot {
-                left.append(item)
-            } else {
-                right.append(item)
-            }
-        }
-        if isReverse {
-            return quickSort(right, isReverse) + middle + quickSort(left, isReverse)
-        }
-        return quickSort(left, isReverse) + middle + quickSort(right, isReverse)
-    }
-    
    
     
     /// 维护最大堆的性质
@@ -324,12 +294,13 @@ class Sort {
     ///   - isOrderedBefore: 排序方式
     func heapSort<T: Comparable>(_ array: inout [T], _ isOrderedBefore: (T , T) -> Bool) {
         buildHeap(&array, isOrderedBefore)
-        var size = array.count
-        for index in stride(from: array.count - 1, through: 1, by: -1) {
-            array.swapAt(index, 0)
-            size -= 1
-            heapify(&array, 0, size, isOrderedBefore)
-        }
+        print("heap sort ", array)
+//        var size = array.count
+//        for index in stride(from: array.count - 1, through: 1, by: -1) {
+//            array.swapAt(index, 0)
+//            size -= 1
+//            heapify(&array, 0, size, isOrderedBefore)
+//        }
     }
     
     

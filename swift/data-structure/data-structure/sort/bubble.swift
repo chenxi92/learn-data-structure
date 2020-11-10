@@ -24,9 +24,10 @@ class Bubble {
     
     static func Test() {
         print("\nBubble sort test begin")
-        let max = Int.random(in: 10...20)
+        let max = Int.random(in: 25...100)
         for _ in 0 ..< max {
-            var source = Tool.RandomArray(0, 100, 20)
+            let count = Int.random(in: 15...60)
+            var source = Tool.RandomArray(0, 100, count)
             let result = Bubble.Sort(array: &source, <)
             if !Tool.IsAscend(result) {
                 print("bubble sort source = \n", source)

@@ -37,9 +37,10 @@ class Insertion {
     
     static func Test() {
         print("\nInsertion sort test begin")
-        let max = Int.random(in: 10...20)
+        let max = Int.random(in: 25...100)
         for _ in 0 ..< max {
-            var source = Tool.RandomArray(0, 100, 20)
+            let count = Int.random(in: 15...60)
+            var source = Tool.RandomArray(0, 100, count)
             let result = Insertion.Sort(array: &source, <)
             if !Tool.IsAscend(result) {
                 print("insertion sort source = \n", source)

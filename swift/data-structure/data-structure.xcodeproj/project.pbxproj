@@ -119,6 +119,7 @@
 				1536A34A2558177900E86996 /* insertion.swift */,
 				1536A34D255836A000E86996 /* shell.swift */,
 				1536A3502558372F00E86996 /* quick.swift */,
+				6CD0C80D2552A6D70024D1FF /* heapSort.swift */,
 			);
 			path = sort;
 			sourceTree = "<group>";
@@ -126,7 +127,6 @@
 		6CD0C80C2552A6D70024D1FF /* heap */ = {
 			isa = PBXGroup;
 			children = (
-				6CD0C80D2552A6D70024D1FF /* heapSort.swift */,
 				6CD0C80E2552A6D70024D1FF /* heap.swift */,
 			);
 			path = heap;

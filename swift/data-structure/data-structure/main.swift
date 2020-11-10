@@ -22,10 +22,15 @@ Bubble.Test()
 Selection.Test()
 Insertion.Test()
 Shell.Test()
-//Quick.Test()
-
+Quick.Test()
+HeapSort.Test()
+HeapSort.Test1()
 
 var s = Sort()
+
+var heapArray = [5, 8, 4, 6, 1, 3]
+s.heapSort(&heapArray, >)
+//print("heap array: \(heapArray)")
 
 let numbers = [ 10, -1, 3, 9, 2, 27, 8, 5, 1, 3, 0, 26 ]
 
@@ -44,23 +49,6 @@ var result = s.countingSort(countArray)
 print("\ncounting sort begin: ", countArray)
 print("counting sort end: ", result)
 
-
-var quickArray = [ 10, 0, 3, 9, 2, 14, 26, 27, 1, 5, 8, -1, 8 ]
-print("\nquick sort begin: ", quickArray)
-s.quicksortLomuto(&quickArray, low: 0, high: quickArray.count - 1)
-print("quick sort end: ", quickArray)
-
-quickArray = [9, 8, 7, 6, 5, 4, 3, 2, 1, 1, 0]
-print("\nquick sort begin: ", quickArray)
-result = s.quickSort(quickArray, true)
-print("quick sort end: ", result)
-
-
-var heapArray = [-1, 5, 2, 6, 0, 3, 9 ,1, 7, 4]
-//heapArray = [4, 1, 3, 2, 16, 9,9, 10, 14, 8, 7]
-print("\nheap sort begin: ", heapArray)
-s.heapSort(&heapArray, <)
-print("heap sort end: ", heapArray)
 
 var bucketArray = [29, 25, 3, 49, 9, 37, 21, 43]
 print("\nbucket sort begin: ", bucketArray)
@@ -154,15 +142,4 @@ testBinarySearchTree()
 
 print(safeEqual("abc", "ab"))
 
-func testHeapSort() {
-    print("\n---[Test begin] heap sort ---\n")
-    for _ in 0 ... 30 {
-        let max = Tool.RandomInt(10000)
-        let array = Tool.RandomArray(0, max, 25)
-        print("origin array", array)
-        let ordered = Tool.IsAscend(heapSort.Sort(array))
-        assert(ordered, "sort was valid")
-    }
-    print("\n---[Test end] heap sort ---\n")
-}
-testHeapSort()
+
