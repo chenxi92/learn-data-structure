@@ -26,7 +26,7 @@
 
 #### swift
 
-`swift` 版本 `5.1`
+`swift` 版本 `5`
 
 ##### Lomuto 选择基准值
 

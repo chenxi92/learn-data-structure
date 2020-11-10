@@ -240,6 +240,7 @@ class Sort {
         var pivotIndex = low
         for j in low ..< high {
             if a[j] <= pivot {
+                
                 (a[pivotIndex], a[j]) = (a[j], a[pivotIndex])
                 pivotIndex += 1
             }
@@ -256,52 +257,6 @@ class Sort {
         }
     }
    
-    
-    /// 维护最大堆的性质
-    ///
-    /// - Parameters:
-    ///   - array: 待排序数组
-    ///   - i: 父节点
-    ///   - size: 数组大小
-    ///   - isOrderedBefore: 排序方式
-    private func heapify<T: Comparable>(_ array: inout [T], _ i: Int, _ size: Int, _ isOrderedBefore: (T , T) -> Bool) {
-        let left = 2 * i
-        let right = left + 1
-        var largest = i
-        if left < size && isOrderedBefore(array[largest], array[left]) {
-            largest = left
-        }
-        if right < size && isOrderedBefore(array[largest], array[right]) {
-            largest = right
-        }
-        if largest != i {
-            array.swapAt(i, largest)
-            heapify(&array, largest, size, isOrderedBefore)
-        }
-    }
-    
-    /// 构建最大/小堆
-    private func buildHeap<T: Comparable>(_ array: inout [T], _ isOrderedBefore: (T , T) -> Bool) {
-        for i in stride(from: array.count/2, through: 0, by: -1) {
-            heapify(&array, i, array.count, isOrderedBefore)
-        }
-    }
-    
-    /// 堆排序
-    ///
-    /// - Parameters:
-    ///   - array: 待排序数组
-    ///   - isOrderedBefore: 排序方式
-    func heapSort<T: Comparable>(_ array: inout [T], _ isOrderedBefore: (T , T) -> Bool) {
-        buildHeap(&array, isOrderedBefore)
-        print("heap sort ", array)
-//        var size = array.count
-//        for index in stride(from: array.count - 1, through: 1, by: -1) {
-//            array.swapAt(index, 0)
-//            size -= 1
-//            heapify(&array, 0, size, isOrderedBefore)
-//        }
-    }
     
     
     /// 桶排序

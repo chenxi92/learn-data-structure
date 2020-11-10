@@ -28,59 +28,68 @@ class HeapSort {
         }
         
         HeapSort.BuildHeap(array: &array, orderCriteria)
-        
+        var size = array.count
+        for i in stride(from: array.count - 1, through: 0, by: -1) {
+            array.swapAt(i, 0)
+            size -= 1
+            HeapShiftDown(array: &array, 0, size, orderCriteria)
+        }
         return array
     }
     
     static private func BuildHeap<T: Comparable>(array: inout [T],  _ orderCriteria:(T, T) -> Bool) {
-        for level in stride(from: array.count/2, through: 0, by: -1) {
-            print("heapify level: \(level) \(array)")
-            Heapify(array: &array, level, array.count, orderCriteria)
+        for level in stride(from: array.count/2 - 1, through: 0, by: -1) {
+            HeapShiftDown(array: &array, level, array.count, orderCriteria)
         }
     }
     
-    static private func Heapify<T: Comparable>(array: inout [T], _ parentIndex: Int, _ size: Int, _ orderCriteria: (T, T) -> Bool)
+    static private func HeapShiftDown<T: Comparable>(array: inout [T], _ parentIndex: Int, _ size: Int, _ orderCriteria: (T, T) -> Bool)
     {
-        let left = parentIndex*2
+        let left = parentIndex*2 + 1
         let right = left + 1
         var first = parentIndex
-        if left < size && orderCriteria(array[left], array[parentIndex]) {
+        if left < size && orderCriteria(array[first], array[left]) {
             first = left
         }
-        if right < size && orderCriteria(array[right], array[parentIndex]) {
+        if right < size && orderCriteria(array[first], array[right]) {
             first = right
         }
         if first == parentIndex {
             return
         }
-        print("\(parentIndex)<->\(first) ", array)
         array.swapAt(parentIndex, first)
-        Heapify(array: &array, first, size, orderCriteria)
+        HeapShiftDown(array: &array, first, size, orderCriteria)
     }
     
     static func Test() {
-        print("\nHeap sort test begin")
+        print("\nHeap sort1 test begin")
         let max = Int.random(in: 25...100)
         for _ in 0 ..< max {
             let count = Int.random(in: 15...60)
             let source = Tool.RandomArray(0, 100, count)
             let result = HeapSort.Sort1(source, <)
             if !Tool.IsAscend(result) {
-                print("Heap sort source = \n", source)
-                print("Heap sort result = \n", result)
-                assert(false, "Heap sort valid")
+                print("Heap sort1 source = \n", source)
+                print("Heap sort1 result = \n", result)
+                assert(false, "Heap sort1 valid")
             }
         }
-        print("Heap sort test success \(max) times.")
+        print("Heap sort1 test success \(max) times.")
     }
     
     static func Test1() {
-        var array = [5, 8, 4, 6, 1, 3]
-        print(array)
-        let result = Sort2(array: &array, <)
-        print("111", result)
-        
-        let minHeap = Heap(array: array, sort: <)
-        print("222", minHeap.nodes)
+        print("\nHeap sort2 test begin")
+        let max = Int.random(in: 25...100)
+        for _ in 0 ..< max {
+            let count = Int.random(in: 15...60)
+            var source = Tool.RandomArray(0, 100, count)
+            let result = HeapSort.Sort2(array: &source, <)
+            if !Tool.IsAscend(result) {
+                print("Heap sort2 source = \n", source)
+                print("Heap sort2 result = \n", result)
+                assert(false, "Heap sort2 valid")
+            }
+        }
+        print("Heap sort2 test success \(max) times.")
     }
 }

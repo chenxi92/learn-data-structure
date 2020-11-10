@@ -22,15 +22,12 @@ Bubble.Test()
 Selection.Test()
 Insertion.Test()
 Shell.Test()
-Quick.Test()
+Quick.Test1()
+Quick.Test2()
 HeapSort.Test()
 HeapSort.Test1()
 
 var s = Sort()
-
-var heapArray = [5, 8, 4, 6, 1, 3]
-s.heapSort(&heapArray, >)
-//print("heap array: \(heapArray)")
 
 let numbers = [ 10, -1, 3, 9, 2, 27, 8, 5, 1, 3, 0, 26 ]
 
