@@ -10,9 +10,8 @@
 ![动图演示](./images/insertionSort.gif)
 
 
+
 #### 代码实现
-
-
 
 #### swift
 
@@ -37,6 +36,25 @@ static func Sort<T: Comparable>(array: inout [T], _ orderCriteria: (T, T) -> Boo
     return array
 }
 ```
+
+
+
+#### Python
+
+```python
+def insertion_sort(array):
+    if (len(array) < 1):
+        return array
+    for i in range(1, len(array)):
+        end = i
+        for i in range(end):
+            if (i < end) and array[end] < array[i]:
+                (array[i], array[end]) = (array[end], array[i])
+    return array
+
+```
+
+
 
 
 

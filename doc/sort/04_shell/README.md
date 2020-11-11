@@ -66,6 +66,24 @@ static func Sort<T: Comparable>(array: inout [T], _ orderCriteria: (T, T) -> Boo
 }
 ```
 
+#### Python
+
+```python
+def shell_sort(array):
+    count = len(array)
+    if count < 1:
+        return array
+    gap = count/2
+    while gap > 0:
+        for i in range(count):
+            begin = i
+            while (begin >= gap) and (array[begin - gap] > array[begin]):
+                (array[begin - gap], array[begin]) = (array[begin], array[begin - gap])
+                begin -= gap
+        gap /= 2
+    return array
+```
+
 
 
 ### 性能

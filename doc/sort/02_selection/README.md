@@ -44,6 +44,25 @@ static func Sort<T: Comparable>(array: inout [T], _ orderCriteria: (T, T) -> Boo
 }
 ```
 
+
+
+#### Python
+
+```python
+def selection_sort(array):
+    for i in range(len(array)):
+        min = i
+        for j in range(i, len(array)):
+            if array[j] < array[min]:
+                min = j
+        if i != min:
+            (array[i], array[min]) = (array[min], array[i])
+    return array
+
+```
+
+
+
 ### 性能
 
 时间复杂度： **O(n^2)**

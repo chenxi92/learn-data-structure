@@ -38,6 +38,26 @@ static func sort<T: Comparable>(array: inout [T], _ orderCriteria:(T, T) -> Bool
 }
 ```
 
+
+
+#### Python
+
+```python
+def bubble_sort(array):
+    for i in range(len(array)):
+        ordered = True
+        end = len(array) - i - 1
+        for j in range(end):
+            if j + 1 < len(array) and array[j] > array[j + 1]:
+                (array[j], array[j + 1]) = (array[j + 1], array[j])
+                ordered = False
+        if ordered is True:
+            break
+    return array
+```
+
+
+
 ### 性能
 
 时间复杂度: O(n^2)
