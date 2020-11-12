@@ -23,6 +23,7 @@
 		15DDAF9624B6B2AC00285173 /* BinarySearchTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DDAF9524B6B2AC00285173 /* BinarySearchTree.swift */; };
 		15DDAF9824B72C7500285173 /* SafeEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DDAF9724B72C7500285173 /* SafeEqual.swift */; };
 		6C386B51252090FF00742666 /* Deque.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C386B50252090FF00742666 /* Deque.swift */; };
+		6CB5D8D6255CB820009C8260 /* merge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB5D8D5255CB820009C8260 /* merge.swift */; };
 		6CD0C80F2552A6D70024D1FF /* tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD0C80B2552A6D70024D1FF /* tool.swift */; };
 		6CD0C8102552A6D70024D1FF /* heapSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD0C80D2552A6D70024D1FF /* heapSort.swift */; };
 		6CD0C8112552A6D70024D1FF /* heap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD0C80E2552A6D70024D1FF /* heap.swift */; };
@@ -58,6 +59,7 @@
 		15DDAF9524B6B2AC00285173 /* BinarySearchTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinarySearchTree.swift; sourceTree = "<group>"; };
 		15DDAF9724B72C7500285173 /* SafeEqual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeEqual.swift; sourceTree = "<group>"; };
 		6C386B50252090FF00742666 /* Deque.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deque.swift; sourceTree = "<group>"; };
+		6CB5D8D5255CB820009C8260 /* merge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = merge.swift; sourceTree = "<group>"; };
 		6CD0C80B2552A6D70024D1FF /* tool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tool.swift; sourceTree = "<group>"; };
 		6CD0C80D2552A6D70024D1FF /* heapSort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = heapSort.swift; sourceTree = "<group>"; };
 		6CD0C80E2552A6D70024D1FF /* heap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = heap.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				1536A34D255836A000E86996 /* shell.swift */,
 				1536A3502558372F00E86996 /* quick.swift */,
 				6CD0C80D2552A6D70024D1FF /* heapSort.swift */,
+				6CB5D8D5255CB820009C8260 /* merge.swift */,
 			);
 			path = sort;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 				6C386B51252090FF00742666 /* Deque.swift in Sources */,
 				15DDAF9624B6B2AC00285173 /* BinarySearchTree.swift in Sources */,
 				15DDAF9424B5E8BC00285173 /* Tree.swift in Sources */,
+				6CB5D8D6255CB820009C8260 /* merge.swift in Sources */,
 				6CD0C8102552A6D70024D1FF /* heapSort.swift in Sources */,
 				6CD0C8112552A6D70024D1FF /* heap.swift in Sources */,
 				1520CF9C2302DC7000C60F3A /* main.swift in Sources */,
