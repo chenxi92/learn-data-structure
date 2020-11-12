@@ -68,7 +68,34 @@ static private func HeapShiftDown<T: Comparable>(array: inout [T], _ parentIndex
 }
 ```
 
+#### Pthon 
 
+```python
+def heap_sort(array):
+    build_heap(array)
+    sorted = []
+    while len(array) > 0:
+        build_heap(array)
+        sorted.append(array.pop(0))
+    return sorted
+
+def build_heap(array):
+    n = len(array)/2 - 1
+    for i in range(n, -1, -1):
+        heap_shift(array, i)
+
+def heap_shift(array, i):
+    leftChild = 2*i + 1
+    rightChild = leftChild + 1
+    first = i
+    if leftChild < len(array) and array[leftChild] < array[first]:
+        first = leftChild
+    if rightChild < len(array) and array[rightChild] < array[first]:
+        first = rightChild
+    if first != i:
+        (array[i], array[first]) = (array[first], array[i])
+        heap_shift(array, first)
+```
 
 ### 性能
 
