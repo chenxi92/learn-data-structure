@@ -168,6 +168,58 @@ func mergeSortBottomUp<T>(_ a: [T], _ isOrderedBefore: (T, T) -> Bool) -> [T] {
 3. 内部的 while 循环把每一对小的有序数组合并一个较大的有序数组， 从 `z[d]` 内读取数据， 写入到 `z[1-d]` 中。
 4. 调整需要合并的元素的个数， 调换数组读写顺序。
 
+
+
+##### Python
+
+```python
+def merge_sort(array):
+    merge_up_to_down(array, 0, len(array) - 1)
+    return array
+
+def merge_up_to_down(array, low, high):
+    if (high <= low):
+        return
+    mid = low + (high - low) / 2
+    merge_up_to_down(array, low, mid)
+    merge_up_to_down(array, mid + 1, high)
+    merge(array, low, mid, high)
+
+def merge_down_to_up(array):
+    size = 1
+    while size < len(array):
+        end = len(array) - size
+        low = 0
+        while low < end:
+            high = min(low + size + size - 1, len(array) - 1)
+            mid = (low + size) - 1
+            merge(array, low, mid, high)
+            low += size + size
+        size += size
+    return array
+
+def merge(array, low, mid, high):
+    left = low
+    right = mid + 1
+    # copy array
+    aux = array[0 : high + 1]
+    for i in range(low, high + 1):
+        if left > mid:
+            array[i] = aux[right]
+            right += 1
+        elif right > high:
+            array[i] = aux[left]
+            left += 1
+        elif aux[left] > aux[right]:
+            array[i] = aux[right]
+            right += 1
+        else:
+            array[i] = aux[left]
+            left += 1
+```
+
+
+
 ### 参考链接
 
 - [十大经典排序算法](https://github.com/hustcc/JS-Sorting-Algorithm)
