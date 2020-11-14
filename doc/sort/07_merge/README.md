@@ -1,7 +1,7 @@
 
 ### 算法简介
 
-Merge Sort 由 [John von Neumann](https://en.wikipedia.org/wiki/John_von_Neumann) 在 1945 年发明的，主要采用 '分而治之' 的方法来排序。 主要有两种实现方式:
+Merge Sort 由 [John von Neumann](https://en.wikipedia.org/wiki/John_von_Neumann) 在 1945 年发明的，主要采用 `分而治之` 的方法来排序。 主要有两种实现方式:
 
 - 自顶向下的递归
 
@@ -25,61 +25,52 @@ Merge Sort 由 [John von Neumann](https://en.wikipedia.org/wiki/John_von_Neumann
 
 ###### swift
 
-swift 版本 5.1
-
 ```swift
-/// 自顶向下实现
-func mergeSortTopDown<T: Comparable>(_ array: [T]) -> [T] {
-    // 1 退出递归条件
-    guard array.count > 1 else { return array }
+static public func SortUpToDown<T: Comparable>(array: inout [T], _ orderCriteria:(T, T) -> Bool) -> [T] {
+    guard array.count > 1 else {
+        return array
+    }
+    Sort(array: &array, low: 0, high: array.count - 1, orderCriteria: orderCriteria)
+    return array
+}
 
-    let middleIndex = array.count / 2
-    let leftArray = mergeSortTopDown(Array(array[0..<middleIndex]))
-    let rightArray = mergeSortTopDown(Array(array[middleIndex..<array.count]))
+static private func Sort<T: Comparable>(array: inout [T], low: Int, high: Int, orderCriteria:(T, T) -> Bool) {
+    guard high > low else {
+        return
+    }
 
-    return merge(leftPile: leftArray, rightPile: rightArray)
+    let mid = low + (high - low)/2 // 避免溢出
+    Sort(array: &array, low: low, high: mid, orderCriteria: orderCriteria)
+    Sort(array: &array, low: mid + 1, high: high, orderCriteria: orderCriteria)
+    Merge(array: &array, low: low, mid: mid, high: high, orderCriteria: orderCriteria)
 }
     
-func merge<T: Comparable>(leftPile: [T], rightPile: [T]) -> [T] {
-    // both leftPile and rightPile are sorted.
-    
-    // 提前分配内存
-    var orderdPile = [T]()
-    orderdPile.reserveCapacity(leftPile.count + rightPile.count)
-    
-    // 分别追踪左右数组排序的位置
-    var leftIndex = 0
-    var rightIndex = 0
-
-    while leftIndex < leftPile.count && rightIndex < rightPile.count {
-        if leftPile[leftIndex] < rightPile[rightIndex] {
-            orderdPile.append(leftPile[leftIndex])
-            leftIndex += 1
-        } else if leftPile[leftIndex] > rightPile[rightIndex] {
-            orderdPile.append(rightPile[rightIndex])
-            rightIndex += 1
+/// 原地归并的抽象方法
+static private func Merge<T: Comparable>(array: inout [T], low: Int, mid: Int, high: Int, orderCriteria: (T, T) -> Bool) {
+    var left = low
+    var right = mid + 1
+    var aux = [T]()
+    for k in 0 ... high {
+        aux.append(array[k])
+    }
+    for k in low ... high {
+        if (left > mid) { // 左半部分元素取完
+            array[k] = aux[right]
+            right += 1
+        } else if (right > high) { // 右半部分元素取完
+            array[k] = aux[left]
+            left += 1
+        } else if orderCriteria(aux[right], aux[left]) {
+            array[k] = aux[right]
+            right += 1
         } else {
-            orderdPile.append(leftPile[leftIndex])
-            leftIndex += 1
-            orderdPile.append(rightPile[rightIndex])
-            rightIndex += 1
+            array[k] = aux[left]
+            left += 1
         }
     }
-
-
-    while leftIndex < leftPile.count {
-        orderdPile.append(leftPile[leftIndex])
-        leftIndex += 1
-    }
-
-    while rightIndex < rightPile.count {
-        orderdPile.append(rightPile[rightIndex])
-        rightIndex += 1
-    }
-
-    return orderdPile
 }
 ```
+
 
 
 ##### 性能
@@ -87,6 +78,7 @@ func merge<T: Comparable>(leftPile: [T], rightPile: [T]) -> [T] {
 平均时间复杂度: O(n log n)
 
 空间复杂度： O(n)
+
 
 
 
@@ -99,78 +91,87 @@ func merge<T: Comparable>(leftPile: [T], rightPile: [T]) -> [T] {
 3. 每 2 个相邻的 4 个元素进行排序(此时每 8 个元素是有序的)；
 4. 依次类推直到所有的元素都排序完成；
 
-
 ##### 动图演示
 
-##### ![自底向上](./../../image/sort/merge-sort-bottom-up.png)
+##### ![自底向上](./images/merge-sort-bottom-up.png)
 
 
 ##### 代码实现
 
 ##### swift
 
-swift 版本 `5.1`
-
 ```swift
-/// 自底向上实现
-func mergeSortBottomUp<T>(_ a: [T], _ isOrderedBefore: (T, T) -> Bool) -> [T] {
-    let n = a.count
+static func SortBottomToUp<T>(_ array: [T], _ orderCriteria: (T, T) -> Bool) -> [T] 
+{
+    let n = array.count
 
-    var z = [a, a]      // 1
+    /// 1. 双缓存：分配一个临时工作数组，同时避免每次合并的时候重新分配内存；
+    /// 使用2个数组，分别用来读写操作；
+    /// 变量 d 来控制读写位置
+    var z = [array, array]
     var d = 0
 
+    /// 2. 待合并的数组宽度 1, 2, 4, 8, ...
     var width = 1
-    while width < n {   // 2
+    while width < n {
+        var writeArray = z[1 - d]
+        let readArray = z[d]
+        /// 3. 每次待合并的小数组的起始位置
+        var begin = 0
+        while begin < n {
 
-        var i = 0
-        while i < n {     // 3
+            /// 当前处理的位置
+            var index = begin
+            /// 左边数组起始位置
+            var left = begin
+            /// 右侧数组起始位置
+            var right = left + width
 
-            var j = i
-            var l = i
-            var r = i + width
+            let lmax = min(left + width, n)
+            let rmax = min(right + width, n)
 
-            let lmax = min(l + width, n)
-            let rmax = min(r + width, n)
-
-            while l < lmax && r < rmax {                
-                if isOrderedBefore(z[d][l], z[d][r]) {
-                    z[1 - d][j] = z[d][l]
-                    l += 1
+            while left < lmax && right < rmax {
+                if orderCriteria(readArray[left], readArray[right]) {
+                    writeArray[index] = readArray[left]
+                    left += 1
                 } else {
-                    z[1 - d][j] = z[d][r]
-                    r += 1
+                    writeArray[index] = readArray[right]
+                    right += 1
                 }
-                j += 1
+                index += 1
             }
-            while l < lmax {
-                z[1 - d][j] = z[d][l]
-                j += 1
-                l += 1
+            /// 右侧处理完毕，处理左侧数组
+            while left < lmax {
+                writeArray[index] = readArray[left]
+                index += 1
+                left += 1
             }
-            while r < rmax {
-                z[1 - d][j] = z[d][r]
-                j += 1
-                r += 1
+            /// 左侧数组处理完毕， 处理右侧数组
+            while right < rmax {
+                writeArray[index] = readArray[right]
+                index += 1
+                right += 1
             }
 
-            i += width*2
+            /// 相邻数组处理完毕，移动到下一对小数组
+            begin += width*2
         }
-
+        /// 增加数组合并范围
         width *= 2
-        d = 1 - d      // 4
+
+        /// 切换辅助数组读写位置
+        z[1-d] = writeArray
+        d = 1 - d
     }
     return z[d]
 }
 ```
 
-1. 双缓存: 分配一个临时的工作数组，同时避免每次合并的时候重新分配内存。使用两个数组，一个用来读，一个用来写，使用 `d` 来控制读写数组。 
-2. 首先合并相邻的每 1 个元素；之后合并相邻的每 2 个元素；之后合并相邻的每 4 个元素 ... 以此类推。使用 `width` 来控制每次合并几个元素, 初始值为 1 。
-3. 内部的 while 循环把每一对小的有序数组合并一个较大的有序数组， 从 `z[d]` 内读取数据， 写入到 `z[1-d]` 中。
-4. 调整需要合并的元素的个数， 调换数组读写顺序。
 
 
 
-##### Python
+
+#### Python
 
 ```python
 def merge_sort(array):
@@ -201,13 +202,13 @@ def merge_down_to_up(array):
 def merge(array, low, mid, high):
     left = low
     right = mid + 1
-    # copy array
+    # 拷贝high个元素
     aux = array[0 : high + 1]
     for i in range(low, high + 1):
-        if left > mid:
+        if left > mid: #左边元素处理完毕，添加右边元素
             array[i] = aux[right]
             right += 1
-        elif right > high:
+        elif right > high: # 右边元素处理完毕，添加左边元素
             array[i] = aux[left]
             left += 1
         elif aux[left] > aux[right]:
@@ -218,6 +219,16 @@ def merge(array, low, mid, high):
             left += 1
 ```
 
+##### `merge` 调用顺序示意图:
+
+
+`自顶向下合并顺序`
+
+![](images/merge-up-to-bottom.png)
+
+自低向上合并顺序
+
+![bottom to up](images/merge-bottom-to-up.png)
 
 
 ### 参考链接

@@ -23,7 +23,7 @@
 
 #### swift
 
-`swift` 版本 `5.1`
+`swift` 版本 `5`
 
 ```swift
 static func Sort<T: Comparable>( array: inout [T], _ orderCriteria:(T, T) -> Bool) -> [T] 

@@ -16,20 +16,10 @@ Quick.Test1()
 Quick.Test2()
 HeapSort.Test()
 HeapSort.Test1()
-Merge.Test()
+Merge.TestUpToDown()
+Merge.TestBottomToUp()
 
 var s = Sort()
-
-//let numbers = [ 10, -1, 3, 9, 2, 27, 8, 5, 1, 3, 0, 26 ]
-//print("\nbegin test merge sort:")
-//let mergeNumbers = [1, 7, 8, 3, 6, 9]
-//print("top-down begin merge: ", mergeNumbers)
-//print("top-down after merge: ", s.mergeSortTopDown(mergeNumbers))
-//
-//let array = [4, 2, 1, 5, 7, 6, 3]
-//print("bottom-up begin merge: ", array)
-//print("bottom-up after merge: ", s.mergeSortBottomUp(array, <))
-
 
 let countArray = [10, 9, 8, 7, 1, 2, 7, 3]
 var result = s.countingSort(countArray)
