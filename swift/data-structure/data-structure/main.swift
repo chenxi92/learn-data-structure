@@ -12,12 +12,14 @@ Bubble.Test()
 Selection.Test()
 Insertion.Test()
 Shell.Test()
-Quick.Test1()
-Quick.Test2()
+Quick.TestRandom()
+Quick.TestLomuto()
+Quick.TestPartitionLeftRight()
 HeapSort.Test()
 HeapSort.Test1()
 Merge.TestUpToDown()
 Merge.TestBottomToUp()
+
 
 var s = Sort()
 

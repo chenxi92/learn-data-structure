@@ -117,3 +117,59 @@ def merge(array, low, mid, high):
             array[i] = aux[left]
             left += 1
 
+def quick_sort(array):
+    partition(array, 0, len(array) - 1)
+    return array
+
+def partition(array, low, high):
+    """
+    array: 待排序数组
+    low:   待排序数组起始坐标
+    high:  待排序数组结束坐标
+    """
+
+    if (low >= high):
+        return
+    l = low # 记录从前往后的扫描位置
+    r = high # 记录从后往前的扫描位置
+    pivot = array[l] # 基准值，选择待排序区间的第一个元素
+    # 每一轮, 先从后往前扫，在从前往后扫
+    while (l < r):
+        while (l < r and array[r] >= pivot):
+            r -= 1
+        if (l < r):
+            array[l] = array[r]
+            l += 1
+        while (l < r and array[l] <= pivot):
+            l += 1
+        if (l < r):
+            array[r] = array[l]
+            r -= 1
+    
+    # 将基准值放入数组的l位
+    array[l] = pivot
+    print l, array
+    partition(array, low, l - 1)
+    partition(array, l + 1, high)
+
+def quick_sort_lomuto(array):
+    partitionLomuto(array, 0, len(array) - 1)
+    return array
+
+def partitionLomuto(array, low, high):
+    if low >= high:
+        return
+    index = low
+    pivot = array[high]
+    for j in range(low, high):
+        if array[j] <= pivot:
+            if (j != index):
+                array[j] , array[index] = (array[index], array[j])
+            index += 1
+    (array[index], array[high]) = (array[high], array[index])
+    print index, array
+    partitionLomuto(array, low, index - 1)
+    partitionLomuto(array, index + 1, high)
+
+# print quick_sort([8,3,12,7,6,9])
+# print quick_sort_lomuto([8,3,12,7,6,9])

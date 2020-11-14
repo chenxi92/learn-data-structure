@@ -101,6 +101,34 @@ def test_merge_sort_bottom_up():
             assert(tool.list_is_ascend(target))       
     print "merge sort bottom up success in {0} times.\n".format(count)
 
+def test_quick_sort():
+    print "\nQuick sort test begin"
+    count = random.randint(100, 1000)
+    for _ in range(count):
+        length = random.randint(5, 30)
+        source = tool.random_list(0, 100, length)
+        target = sort.quick_sort(source)
+        if tool.list_is_ascend(target) is False:
+            print source
+            print target
+            print ""
+            assert(tool.list_is_ascend(target))       
+    print "Quick sort success in {0} times.\n".format(count)
+
+def test_quick_sort_lomuto():
+    print "\nQuick sort lomuto test begin"
+    count = random.randint(100, 1000)
+    for _ in range(count):
+        length = random.randint(5, 30)
+        source = tool.random_list(0, 100, length)
+        target = sort.quick_sort_lomuto(source)
+        if tool.list_is_ascend(target) is False:
+            print source
+            print target
+            print ""
+            assert(tool.list_is_ascend(target))       
+    print "Quick sort lomuto success in {0} times.\n".format(count)
+
 test_bubble_sort()
 test_selection_sort()
 test_insertion_sort()
@@ -108,3 +136,5 @@ test_shell_sort()
 test_heap_sort()
 test_merge_sort_up_bottom()
 test_merge_sort_bottom_up()
+test_quick_sort()
+test_quick_sort_lomuto()

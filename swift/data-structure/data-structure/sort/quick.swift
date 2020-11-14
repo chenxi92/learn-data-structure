@@ -10,7 +10,7 @@ import Foundation
 
 class Quick {
     
-    static func Sort<T: Comparable>(array: inout [T], _ orderCriteria: (T, T) -> Bool) -> [T] {
+    static func SortRandom<T: Comparable>(array: inout [T], _ orderCriteria: (T, T) -> Bool) -> [T] {
         guard array.count > 1 else {
             return array
         }
@@ -29,7 +29,7 @@ class Quick {
             }
         }
         
-        return Quick.Sort(array: &left, orderCriteria) + middle + Quick.Sort(array: &right, <)
+        return Quick.SortRandom(array: &left, orderCriteria) + middle + Quick.SortRandom(array: &right, <)
     }
     
     static func SortLomuto<T: Comparable>(_ array: inout [T]) -> [T] {
@@ -47,35 +47,72 @@ class Quick {
     
     static private func partitionLomuto<T: Comparable>(_ array: inout [T], low: Int, high: Int) -> Int {
         let pivot = array[high]
-        var pivotIndex = low
+        /// 记录基准值的位置，从前往后扫描
+        var i = low
         for j in low ..< high {
             if array[j] <= pivot {
-                array.swapAt(j, pivotIndex)
-                pivotIndex += 1
+                if (i != j) {
+                    array.swapAt(j, i)
+                }
+                i += 1
             }
         }
-        array.swapAt(pivotIndex, high)
-        return pivotIndex
+        array.swapAt(i, high)
+        return i
     }
     
+    static func Sort<T: Comparable>(_ array: inout [T]) -> [T] {
+        partitionLeftRight(&array, low: 0, high: array.count - 1)
+        return array
+    }
     
-    static func Test1() {
-        print("\nQuick sort test begin")
+    static private func partitionLeftRight<T: Comparable>(_ array: inout [T], low: Int, high: Int) {
+        guard high >= low else {
+            return
+        }
+        
+        var left = low
+        var right = high
+        let pivot = array[left]
+        while left < right {
+            while (left < right && array[right] >= pivot) {
+                right -= 1
+            }
+            if left < right {
+                array[left] = array[right]
+                left += 1
+            }
+            while (left < right && array[left] <= pivot) {
+                left += 1
+            }
+            if left < right {
+                array[right] = array[left]
+                right -= 1
+            }
+        }
+        array[left] = pivot
+        
+        partitionLeftRight(&array, low: low, high: left - 1)
+        partitionLeftRight(&array, low: left + 1, high: high)
+    }
+    
+    static func TestRandom() {
+        print("\nQuick sort random test begin")
         let max = Int.random(in: 25...100)
         for _ in 0 ..< max {
             let count = Int.random(in: 15...60)
             var source = Tool.RandomArray(0, 100, count)
-            let result = Quick.Sort(array: &source, <)
+            let result = Quick.SortRandom(array: &source, <)
             if !Tool.IsAscend(result) {
-                print("Quick sort source = \n", source)
-                print("Quick sort result = \n", result)
-                assert(false, "Quick sort valid")
+                print("Quick sort random source = \n", source)
+                print("Quick sort random result = \n", result)
+                assert(false, "Quick sort random valid")
             }
         }
-        print("Quick sort test success \(max) times.")
+        print("Quick sort random test success \(max) times.")
     }
     
-    static func Test2() {
+    static func TestLomuto() {
         print("\nQuick sort lomuto test begin")
         let max = Int.random(in: 25...100)
         for _ in 0 ..< max {
@@ -89,5 +126,23 @@ class Quick {
             }
         }
         print("Quick sort lomuto test success \(max) times.")
+    }
+    
+    static func TestPartitionLeftRight() {
+        print("\nQuick sort partition test begin")
+//        var source = [8, 3, 10, 2, 7, 6, 9, 12]
+//        print(Quick.Sort(&source))
+        let max = Int.random(in: 25...100)
+        for _ in 0 ..< max {
+            let count = Int.random(in: 15...60)
+            var source = Tool.RandomArray(0, 100, count)
+            let result = Quick.Sort(&source)
+            if !Tool.IsAscend(result) {
+                print("Quick sort partition source = \n", source)
+                print("Quick sort partition result = \n", result)
+                assert(false, "Quick sort partition valid")
+            }
+        }
+        print("Quick sort partition test success \(max) times.")
     }
 }
