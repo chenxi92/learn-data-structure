@@ -25,10 +25,8 @@ class Insertion {
         let end = array.count
         for x in 1 ..< end {
             var y = x
-            while y > 0 {
-                if orderCriteria(array[y], array[y - 1]) {
-                    array.swapAt(y, y - 1)
-                }
+            while y > 0 && orderCriteria(array[y], array[y - 1]){
+                array.swapAt(y, y - 1)
                 y -= 1
             }
         }

@@ -148,7 +148,7 @@ def partition(array, low, high):
     
     # 将基准值放入数组的l位
     array[l] = pivot
-    print l, array
+    # print l, array
     partition(array, low, l - 1)
     partition(array, l + 1, high)
 
@@ -167,9 +167,33 @@ def partitionLomuto(array, low, high):
                 array[j] , array[index] = (array[index], array[j])
             index += 1
     (array[index], array[high]) = (array[high], array[index])
-    print index, array
     partitionLomuto(array, low, index - 1)
     partitionLomuto(array, index + 1, high)
 
 # print quick_sort([8,3,12,7,6,9])
 # print quick_sort_lomuto([8,3,12,7,6,9])
+
+def counting_sort(array):
+    # find max value
+    max = array[0]
+    for element in array:
+        if element > max:
+            max = element
+    
+    # initialized the countsArray
+    countsArray = []
+    for _ in range(0, max + 1):
+        countsArray.append(0)
+
+    # calculate counts number and set value to countsArray
+    for element in array:
+        countsArray[element] += 1
+    
+    index = 0
+    for i in range(0, len(countsArray)):
+        value = countsArray[i]
+        while value > 0:
+            array[index] = i
+            index += 1
+            value -= 1
+    return array

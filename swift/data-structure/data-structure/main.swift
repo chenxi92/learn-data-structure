@@ -19,14 +19,10 @@ HeapSort.Test()
 HeapSort.Test1()
 Merge.TestUpToDown()
 Merge.TestBottomToUp()
-
+CountingSort.Test1()
+CountingSort.Test2()
 
 var s = Sort()
-
-let countArray = [10, 9, 8, 7, 1, 2, 7, 3]
-var result = s.countingSort(countArray)
-print("\ncounting sort begin: ", countArray)
-print("counting sort end: ", result)
 
 
 var bucketArray = [29, 25, 3, 49, 9, 37, 21, 43]

@@ -11,6 +11,28 @@
 
 
 
+#### 举例
+
+原始数组
+
+| 下标 | 0    | 1    | 2    | 3    | 4    | 5    | 6    | 7    |
+| :--- | :--- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| 元素 | 7    | 3    | 5    | 8    | 6    | 7    | 4    | 5    |
+
+countsArray 数组
+
+| 下标 | 0    | 1    | 2    | 3    | 4    | 5    | 6    | 7    | 8    |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| 元素 | 0    | 0    | 0    | 1    | 1    | 2    | 1    | 2    | 1    |
+
+排序后数组
+
+| 下标 | 0    | 1    | 2    | 3    | 4    | 5    | 6    | 7    |
+| :--- | :--- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| 元素 | 3    | 3    | 5    | 5    | 6    | 7    | 7    | 0    |
+
+
+
 #### 动图演示
 
 ![计数排序](./images/countingSort.gif)
@@ -19,7 +41,46 @@
 
 ##### swift
 
-`swift` 版本 `5.1`
+`swift` 版本 `5`
+
+基础版本
+
+```swift
+static func Sort(_ array: inout [Int]) {
+    /// 找出元素的最大值
+    var max = array[0]
+    for item in array {
+        if item > max {
+            max = item
+        }
+    }
+
+    /// 分配存储空间
+    var countsArray: [Int] = [Int](repeating: 0, count: max + 1)
+
+    /// 统计每个元素出现次数
+    for i in 0 ..< array.count {
+        let value = array[i]
+        countsArray[value] += 1
+    }
+
+    /// 根据元素出现的次数，对数组进行排序
+    var index = 0
+    for element in 0 ..< countsArray.count {
+        ///元素出现次数
+        var counts = countsArray[element]
+        while counts > 0 {
+            array[index] = element
+            index += 1
+            counts -= 1
+        }
+    }
+}
+```
+
+
+
+改进版本
 
 ```swift
 func countingSort(_ array: [Int]) -> [Int] {
@@ -44,6 +105,37 @@ func countingSort(_ array: [Int]) -> [Int] {
 
     return sortedArray
 }
+```
+
+
+
+##### Python
+
+```python
+def counting_sort(array):
+    # find max value
+    max = array[0]
+    for element in array:
+        if element > max:
+            max = element
+    
+    # initialized the countsArray
+    countsArray = []
+    for _ in range(0, max + 1):
+        countsArray.append(0)
+
+    # calculate counts number and set value to countsArray
+    for element in array:
+        countsArray[element] += 1
+    
+    index = 0
+    for i in range(0, len(countsArray)):
+        value = countsArray[i]
+        while value > 0:
+            array[index] = i
+            index += 1
+            value -= 1
+    return array
 ```
 
 
