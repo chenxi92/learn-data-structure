@@ -8,28 +8,27 @@
 
 import Foundation
 
-Bubble.Test()
-Selection.Test()
-Insertion.Test()
-Shell.Test()
-Quick.TestRandom()
-Quick.TestLomuto()
-Quick.TestPartitionLeftRight()
-HeapSort.Test()
-HeapSort.Test1()
-Merge.TestUpToDown()
-Merge.TestBottomToUp()
-Counting.Test1()
-Counting.Test2()
-Radix.Test()
+func testSort() {
+    print("\n------- begin test sorts -------\n")
+    Bubble.Test()
+    Selection.Test()
+    Insertion.Test()
+    Shell.Test()
+    Quick.TestRandom()
+    Quick.TestLomuto()
+    Quick.TestPartitionLeftRight()
+    HeapSort.Test()
+    HeapSort.Test1()
+    Merge.TestUpToDown()
+    Merge.TestBottomToUp()
+    Counting.Test1()
+    Counting.Test2()
+    Radix.Test()
+    Bucket.Test()
+    print("\n------- complete test sorts -------\n")
+}
 
-var s = Sort()
-
-
-var bucketArray = [29, 25, 3, 49, 9, 37, 21, 43]
-print("\nbucket sort begin: ", bucketArray)
-s.bucketSort(&bucketArray, 10)
-print("bucket sort end: ", bucketArray)
+testSort()
 
 let sear = Search()
 let a1 = [ 0, 1, 1, 3, 3, 3, 3, 6, 8, 10, 11, 11 ]
