@@ -170,9 +170,6 @@ def partitionLomuto(array, low, high):
     partitionLomuto(array, low, index - 1)
     partitionLomuto(array, index + 1, high)
 
-# print quick_sort([8,3,12,7,6,9])
-# print quick_sort_lomuto([8,3,12,7,6,9])
-
 def counting_sort(array):
     # find max value
     max = array[0]
@@ -197,3 +194,52 @@ def counting_sort(array):
             index += 1
             value -= 1
     return array
+
+def radix_sort(array):
+    max = array[0]
+    for element in array:
+        if element > max:
+            max = element
+    
+    divider = 1
+    while divider <= max:
+        array = _counting_sort(divider, array)
+        divider *= 10
+    return array
+
+def _counting_sort(divider, array):
+    # inititalized counts array
+    countsArray = []
+    for _ in range(0, 10):
+        countsArray.append(0)
+    
+    for element in array:
+        # caculate radix
+        # 598 / 1 % 10 = 8
+        # 598 / 10 % 10 = 9
+        # 598 / 100 % 10 = 5
+        index = element / divider % 10
+        countsArray[index] += 1
+    
+    # sum the counts
+    for i in range(1, len(countsArray)):
+        countsArray[i] += countsArray[i - 1]
+
+    newArray = []
+    for _ in range(0, len(array)):
+        newArray.append(0)
+
+    i = len(array) - 1
+    while i >= 0:
+        index = array[i] / divider % 10
+        countsArray[index] -= 1
+        newArray[countsArray[index]]= array[i]
+        i -= 1
+
+    for index in range(0, len(array)):
+        array[index] = newArray[index]
+    return array
+
+# source = [126, 69, 593, 23, 6, 89, 54, 8]
+# print source
+# print radix_sort(source)

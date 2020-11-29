@@ -19,8 +19,9 @@ HeapSort.Test()
 HeapSort.Test1()
 Merge.TestUpToDown()
 Merge.TestBottomToUp()
-CountingSort.Test1()
-CountingSort.Test2()
+Counting.Test1()
+Counting.Test2()
+Radix.Test()
 
 var s = Sort()
 

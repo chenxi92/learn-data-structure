@@ -10,7 +10,7 @@ import Foundation
 
 /// 缺点：
 /// 只能对整数排序
-class CountingSort {
+class Counting {
     
     
     static func Sort1(_ array: inout [Int]) {
@@ -67,7 +67,7 @@ class CountingSort {
         for _ in 0 ..< max {
             let count = Int.random(in: 15...60)
             var source = Tool.RandomArray(0, 100, count)
-            CountingSort.Sort1(&source)
+            Counting.Sort1(&source)
             if !Tool.IsAscend(source) {
                 print("Counting sort = \n", source)
                 assert(false, "Counting sort valid")
@@ -82,7 +82,7 @@ class CountingSort {
         for _ in 0 ..< max {
             let count = Int.random(in: 15...60)
             let source = Tool.RandomArray(0, 100, count)
-            let result = CountingSort.Sort2(source)
+            let result = Counting.Sort2(source)
             if !Tool.IsAscend(result) {
                 print("Counting sort = \n", result)
                 assert(false, "Counting sort valid")

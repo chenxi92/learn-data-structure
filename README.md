@@ -20,4 +20,5 @@
 
 [9. 桶排序](./doc/sort/09_bucket/README.md)
 
+[10. 基数排序](./doc/sort/10_radix/README.md)
 
