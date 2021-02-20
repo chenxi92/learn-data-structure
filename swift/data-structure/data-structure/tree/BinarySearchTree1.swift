@@ -1,5 +1,5 @@
 //
-//  BinarySearchTree.swift
+//  BinarySearchTree1.swift
 //  data-structure
 //
 //  Created by chenxi on 2020/7/9.
@@ -20,11 +20,11 @@ import Foundation
  
     This tree does not automatically balance itself. To make sure it is balanced, you should insert new values in randomized order, not in sorter order.
  */
-public class BinarySearchTree<T: Comparable> {
+public class BinarySearchTree1<T: Comparable> {
     private(set) public var value:T
-    private(set) public var parent: BinarySearchTree?
-    private(set) public var left: BinarySearchTree?
-    private(set) public var right: BinarySearchTree?
+    private(set) public var parent: BinarySearchTree1?
+    private(set) public var left: BinarySearchTree1?
+    private(set) public var right: BinarySearchTree1?
     
     public convenience init(array: [T]) {
         precondition(array.count > 0)
@@ -79,21 +79,20 @@ public class BinarySearchTree<T: Comparable> {
             if let left = left {
                 left.insert(value: value)
             } else {
-                left = BinarySearchTree(value: value)
+                left = BinarySearchTree1(value: value)
                 left?.parent = self
             }
         } else {
             if let right = right {
                 right.insert(value: value)
             } else {
-                right = BinarySearchTree(value: value)
+                right = BinarySearchTree1(value: value)
                 right?.parent = self
             }
-            
         }
     }
     
-    public func search(_ value: T) -> BinarySearchTree? {
+    public func search(_ value: T) -> BinarySearchTree1? {
         if value < self.value {
             return left?.search(value)
         } else if (value > self.value) {
@@ -103,8 +102,8 @@ public class BinarySearchTree<T: Comparable> {
         }
     }
     
-    public func searchUseLoop(_ value: T) -> BinarySearchTree? {
-        var node: BinarySearchTree? = self
+    public func searchUseLoop(_ value: T) -> BinarySearchTree1? {
+        var node: BinarySearchTree1? = self
         while let n = node {
             if value < n.value {
                 node = n.left
@@ -135,7 +134,7 @@ public class BinarySearchTree<T: Comparable> {
         process(value)
     }
     
-    private func reconnectParentTo(node: BinarySearchTree?) {
+    private func reconnectParentTo(node: BinarySearchTree1?) {
         if let parent = parent {
             if isLeftChild {
                 parent.left = node
@@ -146,7 +145,7 @@ public class BinarySearchTree<T: Comparable> {
         node?.parent = parent
     }
     
-    public func minimum() -> BinarySearchTree {
+    public func minimum() -> BinarySearchTree1 {
         var node = self
         while let next = node.left {
             node = next
@@ -154,7 +153,7 @@ public class BinarySearchTree<T: Comparable> {
         return node
     }
     
-    public func maximum() -> BinarySearchTree {
+    public func maximum() -> BinarySearchTree1 {
         var node = self
         while let next = node.right {
             node = next
@@ -162,8 +161,8 @@ public class BinarySearchTree<T: Comparable> {
         return node
     }
     
-    @discardableResult public func remove() -> BinarySearchTree? {
-        let replacement: BinarySearchTree?
+    @discardableResult public func remove() -> BinarySearchTree1? {
+        let replacement: BinarySearchTree1?
         
         // Replacement for current node can be either biggest one on the left or
         // samllest one on the right, whichever is not nil
@@ -208,7 +207,7 @@ public class BinarySearchTree<T: Comparable> {
         return edges
     }
     
-    public func predecessor() -> BinarySearchTree<T>? {
+    public func predecessor() -> BinarySearchTree1<T>? {
         if let left = left {
             return left.maximum()
         } else {
@@ -223,7 +222,7 @@ public class BinarySearchTree<T: Comparable> {
         }
     }
     
-    public func successor() -> BinarySearchTree<T>? {
+    public func successor() -> BinarySearchTree1<T>? {
         if let right = right {
             return right.minimum()
         } else {
@@ -237,11 +236,9 @@ public class BinarySearchTree<T: Comparable> {
             return nil
         }
     }
-    
-    
 }
 
-extension BinarySearchTree: CustomStringConvertible {
+extension BinarySearchTree1: CustomStringConvertible {
     public var description: String {
         var s = ""
         if let left = left {
@@ -252,5 +249,22 @@ extension BinarySearchTree: CustomStringConvertible {
             s += "-> (\(right.description))"
         }
         return s
+    }
+}
+
+func BinarySearchTree1Test() {
+    example(of: "test binary search tree1") {
+        let tree = BinarySearchTree1<Int>(array: [7, 2, 5, 10 , 9 ,1])
+        print(tree)
+        print("tree count: \(tree.count)")
+        
+        print("search 2 using if \(tree.search(2)!)")
+        print("search 2 using loop \(tree.searchUseLoop(2)!)")
+
+        print("search 21 using if \(String(describing: tree.search(21)))")
+        print("search 21 using loop \(String(describing: tree.search(21)))")
+        
+        print("traverse pre-order")
+        tree.traversePreOrder { print($0) }
     }
 }

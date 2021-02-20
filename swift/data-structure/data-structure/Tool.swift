@@ -49,3 +49,8 @@ class Tool {
         return ordered
     }
 }
+
+func example(of: String, _ block: ()->()) -> Void {
+    print("\n---Example of: \(of)---")
+    block()
+}
