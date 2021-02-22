@@ -61,6 +61,35 @@ class Quick {
         return i
     }
     
+    static public func quickSortHoare<T: Comparable>(_ array: inout[T], low: Int, hight: Int) {
+        if low < hight {
+            let pivot = partitionHoare(&array, low: low, hight: hight)
+            quickSortHoare(&array, low: low, hight: pivot)
+            quickSortHoare(&array, low: pivot + 1, hight: hight)
+        }
+    }
+    
+    static private func partitionHoare<T: Comparable>(_ array: inout [T], low: Int, hight: Int) -> Int
+    {
+        /// 选择第一个元素作为基准值
+        let pivot = array[low]
+        /// 小于等于基准值的区域
+        var i = low - 1
+        /// 大于等于基准值的区域
+        var j = hight + 1
+        
+        while true {
+            repeat { j -= 1 } while array[j] > pivot
+            repeat { i += 1 } while array[i] < pivot
+            
+            if i < j {
+                array.swapAt(i, j)
+            } else {
+                return j
+            }
+        }
+    }
+    
     static func Sort<T: Comparable>(_ array: inout [T]) -> [T] {
         partitionLeftRight(&array, low: 0, high: array.count - 1)
         return array
@@ -126,6 +155,21 @@ class Quick {
             }
         }
         print("Quick sort lomuto test success \(max) times.")
+    }
+    
+    static func TestHoare() {
+        print("\nQuick sort hoare test begin")
+        let max = Int.random(in: 25...100)
+        for _ in 0 ..< max {
+            let count = Int.random(in: 15...60)
+            var source = Tool.RandomArray(0, 100, count)
+            Quick.quickSortHoare(&source, low: 0, hight: source.count - 1)
+            if !Tool.IsAscend(source) {
+                print("Quick sort hoare source = \n", source)
+                assert(false, "Quick sort hoare valid")
+            }
+        }
+        print("Quick sort hoare test success \(max) times.")
     }
     
     static func TestPartitionLeftRight() {

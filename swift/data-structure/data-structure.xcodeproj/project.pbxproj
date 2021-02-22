@@ -36,7 +36,7 @@
 		6CD0C8102552A6D70024D1FF /* heapSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD0C80D2552A6D70024D1FF /* heapSort.swift */; };
 		6CD0C8112552A6D70024D1FF /* heap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD0C80E2552A6D70024D1FF /* heap.swift */; };
 		6CE0D48925DF6A96001281FF /* TreeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE0D48825DF6A96001281FF /* TreeNode.swift */; };
-		6CE0D48E25DF6AF5001281FF /* QueueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE0D48D25DF6AF5001281FF /* QueueProtocol.swift */; };
+		6CE0D48E25DF6AF5001281FF /* MyQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE0D48D25DF6AF5001281FF /* MyQueue.swift */; };
 		6CE0D49225DF6B1A001281FF /* RingBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE0D49125DF6B1A001281FF /* RingBuffer.swift */; };
 		6CE0D49725DF6B5D001281FF /* QueueArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE0D49625DF6B5D001281FF /* QueueArray.swift */; };
 		6CE0D49A25DF6B72001281FF /* QueueStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE0D49925DF6B72001281FF /* QueueStack.swift */; };
@@ -87,7 +87,7 @@
 		6CD0C80D2552A6D70024D1FF /* heapSort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = heapSort.swift; sourceTree = "<group>"; };
 		6CD0C80E2552A6D70024D1FF /* heap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = heap.swift; sourceTree = "<group>"; };
 		6CE0D48825DF6A96001281FF /* TreeNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeNode.swift; sourceTree = "<group>"; };
-		6CE0D48D25DF6AF5001281FF /* QueueProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueProtocol.swift; sourceTree = "<group>"; };
+		6CE0D48D25DF6AF5001281FF /* MyQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyQueue.swift; sourceTree = "<group>"; };
 		6CE0D49125DF6B1A001281FF /* RingBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingBuffer.swift; sourceTree = "<group>"; };
 		6CE0D49625DF6B5D001281FF /* QueueArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueArray.swift; sourceTree = "<group>"; };
 		6CE0D49925DF6B72001281FF /* QueueStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueStack.swift; sourceTree = "<group>"; };
@@ -186,7 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				6C386B50252090FF00742666 /* Deque.swift */,
-				6CE0D48D25DF6AF5001281FF /* QueueProtocol.swift */,
+				6CE0D48D25DF6AF5001281FF /* MyQueue.swift */,
 				6CE0D49125DF6B1A001281FF /* RingBuffer.swift */,
 				6CE0D49C25DF6B89001281FF /* QueueRingBuffer.swift */,
 				6CE0D49625DF6B5D001281FF /* QueueArray.swift */,
@@ -274,7 +274,7 @@
 				15DDAF9624B6B2AC00285173 /* BinarySearchTree1.swift in Sources */,
 				1596D823257379F0007782FA /* Bucket.swift in Sources */,
 				6CE0D49D25DF6B89001281FF /* QueueRingBuffer.swift in Sources */,
-				6CE0D48E25DF6AF5001281FF /* QueueProtocol.swift in Sources */,
+				6CE0D48E25DF6AF5001281FF /* MyQueue.swift in Sources */,
 				1596D820257357DC007782FA /* Radix.swift in Sources */,
 				6CE0D49A25DF6B72001281FF /* QueueStack.swift in Sources */,
 				6CB5D8D6255CB820009C8260 /* merge.swift in Sources */,

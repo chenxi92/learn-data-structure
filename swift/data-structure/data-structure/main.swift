@@ -16,6 +16,7 @@ func testSort() {
     Shell.Test()
     Quick.TestRandom()
     Quick.TestLomuto()
+    Quick.TestHoare()
     Quick.TestPartitionLeftRight()
     HeapSort.Test()
     HeapSort.Test1()
