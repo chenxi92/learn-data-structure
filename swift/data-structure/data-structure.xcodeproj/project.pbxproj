@@ -31,6 +31,7 @@
 		6C3D73ED25E3B1DB00807DF1 /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3D73EC25E3B1DB00807DF1 /* Vertex.swift */; };
 		6C3D73F025E3B38A00807DF1 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3D73EF25E3B38A00807DF1 /* Edge.swift */; };
 		6C3D73F325E3B42000807DF1 /* AdjacencyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3D73F225E3B42000807DF1 /* AdjacencyList.swift */; };
+		6C3D73F625E3BCCE00807DF1 /* AdjacencyMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3D73F525E3BCCE00807DF1 /* AdjacencyMatrix.swift */; };
 		6C636E5625CAB34B00F32408 /* LinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C636E5525CAB34B00F32408 /* LinkedList.swift */; };
 		6CB5D8D6255CB820009C8260 /* merge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB5D8D5255CB820009C8260 /* merge.swift */; };
 		6CB7F78225DF979C005E9027 /* BinarySearchTree2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB7F78125DF979C005E9027 /* BinarySearchTree2.swift */; };
@@ -86,6 +87,7 @@
 		6C3D73EC25E3B1DB00807DF1 /* Vertex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vertex.swift; sourceTree = "<group>"; };
 		6C3D73EF25E3B38A00807DF1 /* Edge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Edge.swift; sourceTree = "<group>"; };
 		6C3D73F225E3B42000807DF1 /* AdjacencyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjacencyList.swift; sourceTree = "<group>"; };
+		6C3D73F525E3BCCE00807DF1 /* AdjacencyMatrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjacencyMatrix.swift; sourceTree = "<group>"; };
 		6C636E5525CAB34B00F32408 /* LinkedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedList.swift; sourceTree = "<group>"; };
 		6CB5D8D5255CB820009C8260 /* merge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = merge.swift; sourceTree = "<group>"; };
 		6CB7F78125DF979C005E9027 /* BinarySearchTree2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinarySearchTree2.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				6C3D73EC25E3B1DB00807DF1 /* Vertex.swift */,
 				6C3D73EF25E3B38A00807DF1 /* Edge.swift */,
 				6C3D73F225E3B42000807DF1 /* AdjacencyList.swift */,
+				6C3D73F525E3BCCE00807DF1 /* AdjacencyMatrix.swift */,
 			);
 			path = graph;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				157F4311256FE80000C1D5A0 /* Counting.swift in Sources */,
 				6CD0C8102552A6D70024D1FF /* heapSort.swift in Sources */,
 				6CB7F78825DFAB73005E9027 /* AVLNode.swift in Sources */,
+				6C3D73F625E3BCCE00807DF1 /* AdjacencyMatrix.swift in Sources */,
 				6CE0D49725DF6B5D001281FF /* QueueArray.swift in Sources */,
 				6CB7F78225DF979C005E9027 /* BinarySearchTree2.swift in Sources */,
 				6CD0C8112552A6D70024D1FF /* heap.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  AdjacencyList.swift
+//  AdjacencyMatrix.swift
 //  data-structure
 //
 //  Created by peak on 2021/2/22.
@@ -8,55 +8,65 @@
 
 import Foundation
 
-public class AdjacencyList<T>: Graph {
+public class AdjacencyMatrix<T>: Graph {
     public typealias Element = T
-    private var adjacencies: [Vertex<T>: [Edge<T>]] = [:]
+    private var vertices: [Vertex<T>] = []
+    private var weights: [[Double?]] = []
     public init() {}
     
     public func createVertex(data: T) -> Vertex<T> {
-        let vertex = Vertex(index: adjacencies.count, data: data)
-        adjacencies[vertex] = []
+        let vertex = Vertex(index: vertices.count, data: data)
+        vertices.append(vertex)
+        for i in 0..<weights.count {
+            weights[i].append(nil)
+        }
+        let row = [Double?](repeating: nil, count: vertices.count)
+        weights.append(row)
         return vertex
     }
     
     public func addDirectedEdge(from source: Vertex<T>, to destination: Vertex<T>, weight: Double?) {
-        let edge = Edge(source: source, destination: destination, weight: weight)
-        adjacencies[source]?.append(edge)
+        weights[source.index][destination.index] = weight
     }
     
     public func edges(from source: Vertex<T>) -> [Edge<T>] {
-        return adjacencies[source] ?? []
+        var edges: [Edge<T>] = []
+        for column in 0..<weights.count {
+            if let weight = weights[source.index][column] {
+                edges.append(Edge(source: source, destination: vertices[column], weight: weight))
+            }
+        }
+        return edges
     }
-
+    
     public func weight(from source: Vertex<T>, to destination: Vertex<T>) -> Double? {
-        return self.edges(from: source)
-            .first { $0.destination == destination }?
-            .weight
+        return weights[source.index][destination.index]
     }
 }
 
-extension AdjacencyList: CustomStringConvertible {
+extension AdjacencyMatrix: CustomStringConvertible {
     public var description: String {
-        var result = ""
-        for (vertex, edges) in adjacencies {
-            var edgeString = ""
-            for (index, edge) in edges.enumerated() {
-                if index != edges.count - 1 {
-                    edgeString.append("\(edge.destination), ")
+        let verticesDescription = vertices.map { "\($0)" }.joined(separator: "\n")
+        var grid: [String] = []
+        for i in 0..<weights.count {
+            var row = ""
+            for j in 0..<weights.count {
+                if let value = weights[i][j] {
+                    row += "\(value)\t"
                 } else {
-                    edgeString.append("\(edge.destination)")
+                    row += "ø\t\t"
                 }
             }
-            result.append("\(vertex) ---> [ \(edgeString) ]\n")
+            grid.append(row)
         }
-        return result
+        let edgesDescription = grid.joined(separator: "\n")
+        return "\(verticesDescription)\n\n\(edgesDescription)"
     }
 }
 
-
-func TestAdjacencyList() {
-    example(of: "Test adjacency list") {
-        let graph = AdjacencyList<String>()
+func TestAdjacencyMatrix() {
+    example(of: "Test adjacency matrix") {
+        let graph = AdjacencyMatrix<String>()
 
         let singapore = graph.createVertex(data: "Singapore")
         let tokyo = graph.createVertex(data: "Tokyo")

@@ -18,7 +18,7 @@ extension Vertex: Hashable {
     public var hashValue: Int {
         return index.hashValue
     }
-    
+
     public static func ==(lhs: Vertex, rhs: Vertex) -> Bool {
         return lhs.index == rhs.index
     }

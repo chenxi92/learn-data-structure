@@ -42,6 +42,7 @@ AVLTreeTest()
 TrieTest()
 PriorityQueueTest()
 TestAdjacencyList()
+TestAdjacencyMatrix()
 
 let sear = Search()
 let a1 = [ 0, 1, 1, 3, 3, 3, 3, 6, 8, 10, 11, 11 ]
