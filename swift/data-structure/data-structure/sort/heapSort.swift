@@ -47,18 +47,38 @@ class HeapSort {
     {
         let left = parentIndex*2 + 1
         let right = left + 1
-        var first = parentIndex
-        if left < size && orderCriteria(array[first], array[left]) {
-            first = left
+        var candidate = parentIndex
+        if left < size && orderCriteria(array[candidate], array[left]) {
+            candidate = left
         }
-        if right < size && orderCriteria(array[first], array[right]) {
-            first = right
+        if right < size && orderCriteria(array[candidate], array[right]) {
+            candidate = right
         }
-        if first == parentIndex {
+        if candidate == parentIndex {
             return
         }
-        array.swapAt(parentIndex, first)
-        HeapShiftDown(array: &array, first, size, orderCriteria)
+        array.swapAt(parentIndex, candidate)
+        HeapShiftDown(array: &array, candidate, size, orderCriteria)
+    }
+    
+    static private func siftDown<T: Comparable>(array: inout[T], from index: Int, _ orderCriteria:(T, T) -> Bool) {
+        var parentIndex = index
+        while true {
+            let leftIndex = parentIndex * 2 + 1
+            let rightIndex = leftIndex + 1
+            var candidate = parentIndex
+            if leftIndex < array.count && orderCriteria(array[candidate], array[leftIndex]) {
+                candidate = leftIndex
+            }
+            if rightIndex < array.count && orderCriteria(array[candidate], array[rightIndex]) {
+                candidate = rightIndex
+            }
+            if candidate == parentIndex {
+                return
+            }
+            array.swapAt(parentIndex, candidate)
+            parentIndex = candidate
+        }
     }
     
     static func Test() {

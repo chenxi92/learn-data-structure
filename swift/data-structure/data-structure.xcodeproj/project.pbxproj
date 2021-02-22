@@ -26,6 +26,7 @@
 		6C36695725E0E7E900E674FB /* TrieNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C36695625E0E7E900E674FB /* TrieNode.swift */; };
 		6C36695A25E0E87A00E674FB /* Trie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C36695925E0E87A00E674FB /* Trie.swift */; };
 		6C386B51252090FF00742666 /* Deque.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C386B50252090FF00742666 /* Deque.swift */; };
+		6C3D73E025E39D0500807DF1 /* PriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3D73DF25E39D0500807DF1 /* PriorityQueue.swift */; };
 		6C636E5625CAB34B00F32408 /* LinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C636E5525CAB34B00F32408 /* LinkedList.swift */; };
 		6CB5D8D6255CB820009C8260 /* merge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB5D8D5255CB820009C8260 /* merge.swift */; };
 		6CB7F78225DF979C005E9027 /* BinarySearchTree2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB7F78125DF979C005E9027 /* BinarySearchTree2.swift */; };
@@ -76,6 +77,7 @@
 		6C36695625E0E7E900E674FB /* TrieNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrieNode.swift; sourceTree = "<group>"; };
 		6C36695925E0E87A00E674FB /* Trie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trie.swift; sourceTree = "<group>"; };
 		6C386B50252090FF00742666 /* Deque.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deque.swift; sourceTree = "<group>"; };
+		6C3D73DF25E39D0500807DF1 /* PriorityQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityQueue.swift; sourceTree = "<group>"; };
 		6C636E5525CAB34B00F32408 /* LinkedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedList.swift; sourceTree = "<group>"; };
 		6CB5D8D5255CB820009C8260 /* merge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = merge.swift; sourceTree = "<group>"; };
 		6CB7F78125DF979C005E9027 /* BinarySearchTree2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinarySearchTree2.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				6CE0D49C25DF6B89001281FF /* QueueRingBuffer.swift */,
 				6CE0D49625DF6B5D001281FF /* QueueArray.swift */,
 				6CE0D49925DF6B72001281FF /* QueueStack.swift */,
+				6C3D73DF25E39D0500807DF1 /* PriorityQueue.swift */,
 			);
 			path = queue;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 				1520CFA92302DCA000C60F3A /* Stack.swift in Sources */,
 				6CD0C80F2552A6D70024D1FF /* Tool.swift in Sources */,
 				15DDAF9824B72C7500285173 /* SafeEqual.swift in Sources */,
+				6C3D73E025E39D0500807DF1 /* PriorityQueue.swift in Sources */,
 				159ADBBE24AC92BE0016ED30 /* LRUCache.swift in Sources */,
 				6C36695A25E0E87A00E674FB /* Trie.swift in Sources */,
 				6CE0D4A325DF70C0001281FF /* BinaryNode.swift in Sources */,
