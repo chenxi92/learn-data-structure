@@ -12,6 +12,7 @@ import Foundation
 
 public struct Stack<T> {
     fileprivate var array = [T]()
+    public init() {}
     
     public var isEmpty: Bool {
         return array.isEmpty
@@ -29,8 +30,20 @@ public struct Stack<T> {
         return array.popLast()
     }
     
-    public var top: T? {
+    public func peak() -> T? {
         return array.last
+    }
+}
+
+extension Stack: CustomStringConvertible {
+    public var description: String {
+        let topDivider = "----top----\n"
+        let bottomDivider = "\n-----------"
+        let stackElements = array
+            .map { "\($0)" }
+            .reversed()
+            .joined(separator: "\n")
+        return topDivider + stackElements + bottomDivider
     }
 }
 

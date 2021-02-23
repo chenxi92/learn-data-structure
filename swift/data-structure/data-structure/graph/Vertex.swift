@@ -15,10 +15,10 @@ public struct Vertex<T> {
 }
 
 extension Vertex: Hashable {
-    public var hashValue: Int {
-        return index.hashValue
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(index.hashValue)
     }
-
     public static func ==(lhs: Vertex, rhs: Vertex) -> Bool {
         return lhs.index == rhs.index
     }
