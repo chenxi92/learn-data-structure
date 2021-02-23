@@ -155,9 +155,7 @@ public struct Heap<T> {
         }
         return nodes.removeLast()
     }
-
-
-​    
+ 
     /// Takes a child node and looks at its parents;
     /// if a parent is not larger (max-heap) or not smaller (min-heap) than the child, exchange them.
     internal mutating func shiftUp(_ index: Int) {
