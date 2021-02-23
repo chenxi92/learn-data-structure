@@ -6,6 +6,7 @@ public struct QueueStack<T> : MyQueue {
     private var rightStack: [T] = []
     public init() {}
     
+    @discardableResult
     public mutating func enqueue(_ element: T) -> Bool {
         rightStack.append(element)
         return true
