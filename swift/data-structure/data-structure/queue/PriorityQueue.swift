@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct PriorityQueue<Element: Equatable>: MyQueue {
+struct PriorityQueue<Element>: MyQueue {
     private var heap: Heap<Element>
     
     init(sort: @escaping (Element, Element) -> Bool, elements: [Element] = []) {

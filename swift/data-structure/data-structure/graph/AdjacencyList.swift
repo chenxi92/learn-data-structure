@@ -33,6 +33,10 @@ public class AdjacencyList<T>: Graph {
             .first { $0.destination == destination }?
             .weight
     }
+    
+    public var vertices: [Vertex<T>] {
+        return Array(adjacencies.keys)
+    }
 }
 
 extension AdjacencyList: CustomStringConvertible {
