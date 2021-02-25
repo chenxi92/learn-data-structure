@@ -29,3 +29,5 @@
 
 #### [堆](./doc/heap/README.md)
 
+#### [树](./doc/tree/README.md)
+

@@ -18,15 +18,12 @@ public class AVLNode<Element> {
     public init(value: Element) {
         self.value = value
     }
-    
     public var balanceFactor: Int {
         return leftHeight - rightHeight
     }
-    
     public var leftHeight: Int {
         return leftChild?.height ?? -1
     }
-    
     public var rightHeight: Int {
         return rightChild?.height ?? -1
     }
