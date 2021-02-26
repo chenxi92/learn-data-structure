@@ -12,7 +12,7 @@ def longestPalindrome(s):
     start, end = 0, 0
     for i in range(len(s)):
         left1, right1 = expandAroundCenter(s, i, i)
-        left2, right2 = expandAroundCenter(s, i, i+1)
+        left2, right2 = expandAroundCenter(s, i, i + 1)
         if (right1 - left1) > (end - start):
             start, end = left1, right1
         if (right2 - left2) > (end - start):
