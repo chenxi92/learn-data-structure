@@ -12,7 +12,7 @@ class Solution(object):
         water = 0
         left = 0
         right = len(height) - 1
-        while left < height:
+        while left < right:
             water = max(water, (right - left) * min(height[left], height[right]))
             if height[left] < height[right]:
                 left += 1
