@@ -19,6 +19,7 @@ class ListNode(object):
     def __str__(self):
         return "%s->%s" % (self.val, self.next)
 
+
 class Solution(object):
     # Time complexity: O(l)
     # Space complexity: O(1)
@@ -38,7 +39,7 @@ class Solution(object):
             first = first.next
         first.next = first.next.next
         return dummy.next
-    
+
     def removeNthFromEnd1(self, head, n):
         dummy = ListNode(0)
         dummy.next = head
@@ -46,12 +47,13 @@ class Solution(object):
         second = dummy
         for _ in range(n + 1):
             first = first.next
-        
+
         while first is not None:
             first = first.next
             second = second.next
         second.next = second.next.next
         return dummy.next
+
 
 head = ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5)))))
 print Solution().removeNthFromEnd1(head, 2)
