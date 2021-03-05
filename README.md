@@ -31,3 +31,5 @@
 
 #### [树](./doc/tree/README.md)
 
+- [霍夫曼编码](./doc/greedy/README.md)
+
