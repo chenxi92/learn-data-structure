@@ -14,6 +14,25 @@ import Foundation
 
 class Solution {
     
+    func subsetWithDup(_ nums: [Int]) -> [[Int]] {
+        var results: Set<[Int]> = Set()
+        var path: [Int] = []
+        
+        func dfs(_ nums: [Int], _ path: inout [Int], _ results: inout Set<[Int]>, _ start: Int) {
+            results.insert(path)
+            for i in start..<nums.count {
+                path.append(nums[i])
+                
+                dfs(nums, &path, &results, i + 1)
+                
+                path.removeLast()
+            }
+        }
+        
+        dfs(nums.sorted(), &path, &results, 0)
+        return Array(results)
+    }
+    
     func subsetWithDup1(_ nums: [Int]) -> [[Int]] {
         var results: [[Int]] = []
         if nums.isEmpty {
@@ -67,5 +86,6 @@ class Solution {
 
 let nums = [1, 2, 2]
 
+print(Solution().subsetWithDup(nums))
 print(Solution().subsetWithDup1(nums))
 print(Solution().subsetWithDup2(nums))
