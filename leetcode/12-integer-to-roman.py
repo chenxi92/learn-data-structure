@@ -13,8 +13,8 @@
 
 # There are six instances where subtraction is used:
 
-# I can be placed before V (5) and X (10) to make 4 and 9. 
-# X can be placed before L (50) and C (100) to make 40 and 90. 
+# I can be placed before V (5) and X (10) to make 4 and 9.
+# X can be placed before L (50) and C (100) to make 40 and 90.
 # C can be placed before D (500) and M (1000) to make 400 and 900.
 
 class Solution(object):
@@ -29,16 +29,18 @@ class Solution(object):
         c = ["", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"]
         x = ["", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"]
         l = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"]
-        return m[num/1000] + c[num%1000/100] + x[num%1000%100/10] + l[num%10]
-    
+        return m[num/1000] + c[num % 1000/100] + x[num % 1000 % 100/10] + l[num % 10]
+
     def intToRoman1(self, num):
         values = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
-        numerals = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"]
+        numerals = ["M", "CM", "D", "CD", "C", "XC",
+                    "L", "XL", "X", "IX", "V", "IV", "I"]
         ret = ""
         for i, v in enumerate(values):
             ret += (num/v) * numerals[i]
             num %= v
         return ret
+
 
 print Solution().intToRoman(3)
 print Solution().intToRoman(4)
