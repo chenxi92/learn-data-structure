@@ -1,4 +1,4 @@
-import UIKit
+import Foundation
 
 /**
  # https://leetcode.com/problems/search-in-rotated-sorted-array/
@@ -20,3 +20,35 @@ import UIKit
  # nums is guaranteed to be rotated at some pivot.
  # -104 <= target <= 104
  */
+
+/// Input [4, 5, 6, 7, 0, 1, 2]
+/// if target is 1: [-inf, -inf, -inf, -inf, 0, 1, 2]
+/// if target is 5: [4, 5, 6, 7, inf, inf, inf]
+
+class Solution {
+    func search(_ nums: [Int], _ target: Int) -> Int {
+        var low = 0
+        var high = nums.count
+        while low < high {
+            let mid = low + (high - low) / 2
+            if (nums[0] > nums[mid]) == (nums[0] > target) {
+                if nums[mid] > target {
+                    high = mid
+                } else if nums[mid] < target {
+                    low = mid + 1
+                } else {
+                    return mid
+                }
+            } else if nums[0] > target {
+                low = mid + 1
+            } else {
+                high = mid
+            }
+        }
+        return -1
+    }
+}
+
+print(Solution().search([4, 5, 6, 7, 0, 1, 2], 0))
+print(Solution().search([5, 1, 3], 5))
+print(Solution().search([1], 1))
