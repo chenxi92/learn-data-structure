@@ -22,29 +22,38 @@ import Foundation
  */
 
 class Solution {
-    private func addSring(_ num1: String, _ num2: String) -> String {
-        var temp: [String] = []
-        var i = num1.count - 1
-        var j = num2.count - 1
-        var cary = 0
-        while i >= 0 || j >= 0 || cary != 0{
-            let n1 = 0
-            if i >= 0 {
-//                n1 = Int
-            }
-        }
-        return ""
-    }
     
     func multiply(_ num1: String, _ num2: String) -> String {
         if num1 == "0" || num2 == "0" {
             return "0"
         }
-        var result = "0"
-        return result
+        var result: [Int] = Array(repeating: 0, count: num1.count + num2.count)
+        let num1Array: [Character] = Array(num1)
+        let num2Array: [Character] = Array(num2)
+        var i = num1Array.count - 1
+        while i >= 0 {
+            let n1: Int = Int(String(num1Array[i]))!
+            var j = num2Array.count - 1
+            while j >= 0 {
+                let n2: Int = Int(String(num2Array[j]))!
+                let sum: Int = result[i + j + 1] + n1 * n2
+                result[i + j + 1] = sum % 10
+                result[i + j] += sum / 10
+                j -= 1
+            }
+            i -= 1
+        }
+        var ans = ""
+        for i in 0..<result.count {
+            if i == 0 && result[i] == 0 {
+                continue
+            }
+            ans += String(result[i])
+        }
+        return ans
     }
 }
 
-let num1 = "9"
-let num2 = "9"
+let num1 = "123"
+let num2 = "456"
 print(Solution().multiply(num1, num2))

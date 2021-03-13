@@ -22,7 +22,32 @@
 
 class Solution(object):
 
-    def multiply(self, num1, num2):
+    def multiply1(self, num1, num2):
+        if num1 == "0" or num2 == "0":
+            return "0"
+        results = []
+        for i in range(len(num1) + len(num2)):
+            results.append(0)
+        i = len(num1) - 1
+        while i >= 0:
+            n1 = int(num1[i])
+            j = len(num2) - 1
+            while j >= 0:
+                n2 = int(num2[j])
+                sum = results[i + j + 1] + n1 * n2
+                results[i + j + 1] = sum % 10
+                results[i + j] += sum / 10
+                j -= 1
+            i -= 1
+        # print results
+        ans = ""
+        for i in range(len(results)):
+            if i == 0 and results[i] == 0:
+                continue
+            ans += str(results[i])
+        return ans
+
+    def multiply2(self, num1, num2):
         if num1 == "0" or num2 == "0":
             return "0"
         results = "0"
@@ -74,4 +99,5 @@ num1 = "123"
 num2 = "456"
 # num1 = "9"
 # num2 = "9"
-print Solution().multiply(num1, num2)
+print Solution().multiply1(num1, num2)
+print Solution().multiply2(num1, num2)
