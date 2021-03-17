@@ -48,8 +48,8 @@ class Solution(object):
                 i += 1
             size = len(results)
             for j in range(size):
-            	element = list(results[j])
-            	for _ in range(dupCount + 1):
+                element = list(results[j])
+                for _ in range(dupCount + 1):
                     # 加入当前重复数字
                     element.append(nums[i])
                     newElement = list(element)
