@@ -1,7 +1,8 @@
 # coding: utf-8
 
 # https://leetcode.com/problems/generate-parentheses/
-# Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
+# Given n pairs of parentheses, write a function to generate all combinations
+# of well-formed parentheses.
 
 # Input: n = 3
 # Output: ["((()))","(()())","(())()","()(())","()()()"]
@@ -13,7 +14,7 @@
 class Solution(object):
     def generateParenthesis(self, n):
         def generate(A=[]):
-            if len(A) == 2*n:
+            if len(A) == 2 * n:
                 if valid(A):
                     ans.append("".join(A))
             else:

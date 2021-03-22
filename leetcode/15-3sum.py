@@ -2,7 +2,8 @@
 
 # https://leetcode.com/problems/3sum/
 
-# Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? 
+# Given an array nums of n integers, are there elements a, b, c in nums
+# such that a + b + c = 0?
 # Find all unique triplets in the array which gives the sum of zero.
 # Notice that the solution set must not contain duplicate triplets.
 
@@ -38,6 +39,6 @@ class Solution(object):
         return ret
 
 
-print Solution().threeSum([-1,0,1,2,-1,-4])
+print Solution().threeSum([-1, 0, 1, 2, -1, -4])
 print Solution().threeSum([0, 0, 0])
-print Solution().threeSum([-4,-2,1,-5,-4,-4,4,-2,0,4,0,-2,3,1,-5,0])
+print Solution().threeSum([-4, -2, 1, -5, -4, -4, 4, -2, 0, 4, 0, -2, 3, 1, -5, 0])

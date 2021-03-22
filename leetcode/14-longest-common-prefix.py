@@ -1,7 +1,8 @@
 # coding: utf-8
 
 # https://leetcode.com/problems/longest-common-prefix/
-# Write a function to find the longest common prefix string amongst an array of strings.
+# Write a function to find the longest common prefix string
+# amongst an array of strings.
 # If there is no common prefix, return an empty string "".
 
 # Constraints:
@@ -20,5 +21,6 @@ class Solution(object):
                     return shortest[:i]
         return shortest
 
-print Solution().longestCommonPrefix(["flower","flow","flight"])
-print Solution().longestCommonPrefix(["dog","racecar","car"])
+
+print Solution().longestCommonPrefix(["flower", "flow", "flight"])
+print Solution().longestCommonPrefix(["dog", "racecar", "car"])

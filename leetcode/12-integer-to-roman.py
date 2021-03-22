@@ -29,7 +29,7 @@ class Solution(object):
         c = ["", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"]
         x = ["", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"]
         l = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"]
-        return m[num/1000] + c[num % 1000/100] + x[num % 1000 % 100/10] + l[num % 10]
+        return m[num / 1000] + c[num % 1000 / 100] + x[num % 1000 % 100 / 10] + l[num % 10]
 
     def intToRoman1(self, num):
         values = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
@@ -37,7 +37,7 @@ class Solution(object):
                     "L", "XL", "X", "IX", "V", "IV", "I"]
         ret = ""
         for i, v in enumerate(values):
-            ret += (num/v) * numerals[i]
+            ret += (num / v) * numerals[i]
             num %= v
         return ret
 

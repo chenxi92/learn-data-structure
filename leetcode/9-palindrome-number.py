@@ -2,7 +2,8 @@
 
 # https://leetcode.com/problems/palindrome-number/
 # Given an integer x, return true if x is palindrome integer.
-# An integer is a palindrome when it reads the same backward as forward. For example, 121 is palindrome while 123 is not.
+# An integer is a palindrome when it reads the same backward as forward.
+# For example, 121 is palindrome while 123 is not.
 
 class Solution(object):
     def isPalindrome(self, x):
@@ -18,6 +19,7 @@ class Solution(object):
             reverse = (reverse * 10) + (y % 10)
             y = (y / 10)
         return reverse == x
+
 
 print Solution().isPalindrome(121)
 print Solution().isPalindrome(-121)
