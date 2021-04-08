@@ -62,8 +62,35 @@ class Solution {
         }
         return dp[n - 1][m - 1]
     }
+    
+    func isMatch1(_ s: String, _ p: String) -> Bool {
+        let sArray = Array(s)
+        let pArray = Array(p)
+        let m = s.count + 1
+        let n = p.count + 1
+        /// dp[i][j] 表示s第i个字符和p的第j个字符匹配
+        var dp = Array(repeating: Array(repeating: false, count: n), count: m)
+        dp[0][0] = true
+        // s 为空， p全部为*才匹配
+        for j in stride(from: 1, to: n, by: 1) {
+            dp[0][j] = dp[0][j - 1] && pArray[j - 1] == "*"
+        }
+        for i in stride(from: 1, to: m, by: 1) {
+            for j in stride(from: 1, to: n, by: 1) {
+                if pArray[j - 1] == "?" || pArray[j - 1] == sArray[i - 1] {
+                    dp[i][j] = dp[i - 1][j - 1]
+                } else if pArray[j - 1] == "*" {
+                    /// dp[i - 1][j] 表示 p[j - 1] 匹配空字符串
+                    /// dp[i - 1][j] 表示 p[j - 1] 匹配任意字符串
+                    dp[i][j] = dp[i - 1][j] || dp[i][j - 1]
+                }
+            }
+        }
+        return dp[m - 1][n - 1]
+    }
 }
 
 let s = "abcdb"
-let p = ""
+let p = "**"
 print(Solution().isMatch(s, p))
+print(Solution().isMatch1(s, p))

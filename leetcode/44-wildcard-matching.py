@@ -50,10 +50,29 @@ class Solution(object):
             print item
         return dp[n - 1][m - 1]
 
+    def isMatch1(self, s, p):
+        m = len(s) + 1
+        n = len(p) + 1
+        dp = [[False] * n for _ in range(m)]
+        dp[0][0] = True
+        # if s is empty, only p is all * match
+        for j in range(1, n):
+            dp[0][j] = dp[0][j - 1] and p[j - 1] == "*"
+        for i in range(1, m):
+            for j in range(1, n):
+                if p[j - 1] == s[i - 1] or p[j - 1] == "?":
+                    dp[i][j] = dp[i - 1][j - 1]
+                elif p[j - 1] == "*":
+                    # dp[i - 1][j] match any character
+                    # dp[i][j - 1] match empty
+                    dp[i][j] = dp[i - 1][j] or dp[i][j - 1]
+        return dp[m - 1][n - 1]
+
 
 s = "adceb"
 p = "*a*b"
 # s = ""
-# p = "***a"
+# p = "****"
 print "{} match {}".format(s, p)
 print Solution().isMatch(s, p)
+print Solution().isMatch1(s, p)
