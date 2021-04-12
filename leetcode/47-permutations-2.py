@@ -37,25 +37,53 @@ class Solution(object):
             else:
                 counter[num] = 1
 
-        def trackback(comb, counter):
-            if len(comb) == len(nums):
-                results.append(list(comb))
+        def trackback(path, counter):
+            if len(path) == len(nums):
+                results.append(list(path))
                 return
 
             for num in counter:
                 if counter[num] > 0:
-                    comb.append(num)
+                    path.append(num)
                     counter[num] -= 1
 
-                    trackback(comb, counter)
+                    trackback(path, counter)
 
-                    comb.pop()
+                    path.pop()
                     counter[num] += 1
 
         trackback([], counter)
         return results
 
+    def permuteUnique2(self, nums):
+        ans = []
+        # 标记是否使用过
+        used = [False] * len(nums)
+        # 排序
+        nums.sort()
 
-nums = [1, 1, 2]
-print Solution().permuteUnique(nums)
-print Solution().permuteUnique1(nums)
+        def traceback(path):
+            for i in range(len(nums)):
+                if len(path) == len(nums):
+                    ans.append(path[:])
+                    return
+                if used[i] is True:
+                    continue
+                # 减枝
+                if i > 0 and nums[i] == nums[i - 1] and not used[i - 1]:
+                    continue
+                path.append(nums[i])
+                used[i] = True
+                traceback(path)
+                used[i] = False
+                # 删除最后一个元素
+                path.pop()
+
+        traceback([])
+        return ans
+
+
+nums = [1, 1, 2, 2]
+print Solution().permuteUnique(nums[:])
+print Solution().permuteUnique1(nums[:])
+print Solution().permuteUnique2(nums[:])

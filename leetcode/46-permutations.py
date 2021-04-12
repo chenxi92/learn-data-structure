@@ -11,20 +11,20 @@
 # All the integers of nums are unique.
 
 class Solution(object):
-    def permute(self, nums):
+    def permute1(self, nums):
         ans = []
 
-        def dfs(nums, path, rets):
+        def backtrack(nums, path, rets):
             if not nums:
                 rets.append(path)
                 return
             for i in range(len(nums)):
-                dfs(nums[:i] + nums[i + 1:], path + [nums[i]], rets)
+                backtrack(nums[:i] + nums[i + 1:], path + [nums[i]], rets)
 
-        dfs(nums, [], ans)
+        backtrack(nums, [], ans)
         return ans
 
-    def permute1(self, nums):
+    def permute2(self, nums):
         def backtrack(start, end):
             if start == end:
                 ans.append(nums[:])
@@ -38,7 +38,7 @@ class Solution(object):
         backtrack(0, len(nums))
         return ans
 
-    def permute2(self, nums):
+    def permute3(self, nums):
         if len(nums) == 0:
             return []
         ans = []
@@ -58,12 +58,32 @@ class Solution(object):
                     ans.append(temp)
         return ans
 
+    def permute4(self, nums):
+        ans = []
+        # 标记是否使用过
+        used = [False for _ in range(len(nums))]
+
+        def traceback(path):
+            if len(path) == len(nums):
+                ans.append(path[:])
+                return
+            for i in range(len(nums)):
+                if used[i] is True:
+                    continue
+                path.append(nums[i])
+                # print "add:", path
+                used[i] = True
+                traceback(path)
+                used[i] = False
+                path.pop()
+                # print "  remove:", path
+
+        traceback([])
+        return ans
+
 
 nums = [1, 2, 3]
-print Solution().permute(nums)
-
-nums1 = [1, 2, 3]
-print Solution().permute1(nums1)
-
-nums2 = [1, 2, 3]
-print Solution().permute2(nums2)
+print "permute1:\n", Solution().permute1(nums[:])
+print "\npermute2:\n", Solution().permute2(nums[:])
+print "\npermute3:\n", Solution().permute3(nums[:])
+print "\npermute4:\n", Solution().permute4(nums[:])
