@@ -12,28 +12,6 @@
 
 
 class Solution(object):
-    def subsetWithDup(self, nums):
-        results = []
-        nums.sort()
-
-        def traceback(path, nums, length, start=0):
-            if len(path) == length:
-                results.append(path[:])
-                return
-            for i in range(start, len(nums)):
-                if i > start and nums[i] == nums[i - 1]:
-                    continue
-
-                path.append(nums[i])
-
-                subNums = nums[:i] + nums[i + 1:]
-                traceback(path, subNums, length, i)
-
-                path.pop()
-
-        for k in range(len(nums) + 1):
-            traceback([], nums, k)
-        return results
 
     def subsetWithDup1(self, nums):
         results = []
@@ -57,8 +35,49 @@ class Solution(object):
             i += 1
         return results
 
+    def subsetWithDup2(self, nums):
+        results = []
+        nums.sort()
+
+        def traceback(path, nums, length, start=0):
+            if len(path) == length:
+                results.append(path[:])
+                return
+            for i in range(start, len(nums)):
+                if i > start and nums[i] == nums[i - 1]:
+                    continue
+
+                path.append(nums[i])
+
+                subNums = nums[:i] + nums[i + 1:]
+                traceback(path, subNums, length, i)
+
+                path.pop()
+
+        for k in range(len(nums) + 1):
+            traceback([], nums, k)
+        return results
+
+    def subsetWithDup3(self, nums):
+        results = []
+        nums.sort()
+
+        def traceback(path, start):
+            results.append(path[:])
+            for i in range(start, len(nums)):
+                if i > start and nums[i] == nums[i - 1]:
+                    continue
+
+                path.append(nums[i])
+                traceback(path, start + 1)
+                path.pop()
+
+        traceback([], 0)
+        return results
+
 
 nums = [1, 2, 2, 2]
 print nums
-print Solution().subsetWithDup(nums)
-print Solution().subsetWithDup1(nums)
+print "subsetWithDup1", Solution().subsetWithDup1(nums)
+print "subsetWithDup2", Solution().subsetWithDup2(nums)
+print "subsetWithDup3", Solution().subsetWithDup3(nums)

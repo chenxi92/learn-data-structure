@@ -10,6 +10,7 @@
 # -10 <= nums[i] <= 10
 # All the numbers of nums are unique.
 
+
 class Solution(object):
     def subsets(self, nums):
         """
@@ -52,11 +53,29 @@ class Solution(object):
             output.append([nums[j] for j in range(n) if bitmask[j] == '1'])
         return output
 
+    def subsets3(self, nums):
+        ans = []
+        if len(nums) == 0:
+            return ans
+
+        def dfs(path, begin):
+            ans.append(path[:])
+            for i in range(begin, len(nums)):
+                path.append(nums[i])
+                print "before dfs {} - {}".format(i, path)
+                dfs(path, i + 1)
+                path.pop()
+                print "  after dfs {} - {}".format(i, path)
+
+        dfs([], 0)
+        return ans
+
 
 nums = [1, 2, 3]
 print Solution().subsets(nums)
 print Solution().subsets1(nums)
-print Solution().subsets2([0])
+print Solution().subsets2(nums)
+print Solution().subsets3(nums)
 
 n = 1
 nth_bit = 1 << n

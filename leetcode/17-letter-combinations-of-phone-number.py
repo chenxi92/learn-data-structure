@@ -12,6 +12,7 @@
 # 0 <= digits.length <= 4
 # digits[i] is a digit in the range ['2', '9'].
 
+
 class Solution(object):
     def letterCombinations(self, digits):
         phone = {'2': ['a', 'b', 'c'],
@@ -25,9 +26,12 @@ class Solution(object):
                  }
 
         def backtrack(combination, next_digists):
+                # combination: 组合内容
+                # next_digists: 剩下需要组合的字符串
             if len(next_digists) == 0:
                 output.append(combination)
             else:
+                # next_digists[0] 遍历第一个字符对应的字符串
                 for letter in phone[next_digists[0]]:
                     backtrack(combination + letter, next_digists[1:])
         output = []
