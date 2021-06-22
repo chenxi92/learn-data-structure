@@ -22,6 +22,25 @@ class Bubble {
         return array
     }
     
+    static func Sort1<T: Comparable>(array: inout [T], _ orderCriteria:(T, T) -> Bool) {
+        /// loop times: n - 1
+        for loop in stride(from: 0, to: array.count - 1, by: 1) {
+            
+            var hasSwapped: Bool = false
+            
+            for pair in stride(from: 0, to: array.count - 1 - loop, by: 1) {
+                if orderCriteria(array[pair + 1], array[pair]) {
+                    array.swapAt(pair, pair + 1)
+                    hasSwapped = true
+                }
+            }
+            
+            if !hasSwapped  {
+                break
+            }
+        }
+    }
+    
     static func Test() {
         print("\nBubble sort test begin")
         let max = Int.random(in: 25...100)
@@ -36,5 +55,20 @@ class Bubble {
             }
         }
         print("Bubble sort test success \(max) times.")
+    }
+    
+    static func TestOptimistion() {
+        print("\nBubble sort optimistion test begin")
+        let max = Int.random(in: 25...100)
+        for _ in 0 ..< max {
+            let count = Int.random(in: 15...60)
+            var source = Tool.RandomArray(0, 100, count)
+            Bubble.Sort1(array: &source, <)
+            if !Tool.IsAscend(source) {
+                print("bubble sort result = \n", source)
+                assert(false, "bubble sort valid")
+            }
+        }
+        print("Bubble sort optimistion test success \(max) times.")
     }
 }

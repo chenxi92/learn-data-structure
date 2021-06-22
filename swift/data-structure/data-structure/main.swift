@@ -11,6 +11,7 @@ import Foundation
 func testSort() {
     print("\n------- begin test sorts -------\n")
     Bubble.Test()
+    Bubble.TestOptimistion()
     Selection.Test()
     Insertion.Test()
     Shell.Test()

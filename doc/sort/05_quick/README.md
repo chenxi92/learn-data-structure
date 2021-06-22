@@ -62,57 +62,83 @@ static private func partitionLomuto<T: Comparable>(_ array: inout [T], low: Int,
 }
 ```
 
+
+
+###### Partition 原理
+
+ for 循环把数组分隔成 4 部分：
+
+- [low, i] 包含所有小于或等于基准值的元素
+- [i + 1, j - 1] 包含所有大于基准值的元素
+- [j, height - 1] 包含尚未遍历到的元素
+- [height] 基准值
+
+```
+[ values <= pivot | values > pivot | not looked at yet | pivot ]
+  low           i   i+1        j-1   j          high-1   high
+```
+
+
+
 ###### Partition 过程举例
 
 假设初始数组是 `8` , `3` , `12` , `7` , `6` , `9` , 初始值 low = 0， high = 5， pivot = 9:
 
-第0次遍历时， j = 0， i= 0， array[0] = 8 小于 9,  j = i = 0 不用交换， i 加 1 后为 1，交换后如下：
+第0次遍历时 `i = j = 0`，`array[j] < array[high]`  且 `i = j`  ,  所以遍历后  `i = j = 1`, 未遍历部分下标为: 1 到 4
 
 ```
-8		3		12	7		6		9
-		i = 1
-j = 0
+|8  3|	12	7		6		|9|
+low                  high
+    i
+    j
 ```
 
-第1次遍历时， j = 1, i = 1, array[1] = 3 小于 9,   j = i = 1不用交换， i 加 1 后为 2，交换后如下：
+第1次遍历时 `i = j = 1`，`array[j] < array[high]` 且 `i = j` ,  所以遍历后  `i = j = 2`, 未遍历部分下标为: 2 到 4
 
 ```
-8		3		12	7		6		9
-				i = 2
-		j = 1
+|8  3  12｜	7		6		|9|
+low                  high
+        i
+        j
 ```
 
-第2次遍历时， j = 2, i = 2, array[2] = 12 大于 9 不用交换，交换后如下：
+第2次遍历时 `i = j = 2` ，`array[j] > array[high]` ,  所以遍历后  `i = 2,  j = 3` , 未遍历部分下标为: 3 到 4
 
 ```
-8		3		12	7		6		9
-				i = 2
-		    j = 2
+|8  3  12	 7｜		6		|9|
+low                  high
+        i
+           j
 ```
 
-第3次遍历时， j = 3, i = 2, array[3] = 7 小于 9,  j != i 交换 array[3] 和 array[2]，i 加 1 后为 3, 交换后如下：
+第3次遍历时 `i = 2, j = 3`，`array[j] < array[high]` ,  且 `i != j` ,  需要交换下标 2 和 3 的位置， 遍历后  `i = 3,  j = 4`, 未遍历部分下标为: 4 到 4
 
 ```
-8		3		7	 12		6		9
-				   i = 3
-		       j = 3
+|8  3  7	 12	  6｜		|9|
+low                    high
+           i
+                 j
 ```
 
-第4次遍历时， j = 4, i = 3, array[4] = 6 小于 9,  j != i 交换 array[4] 和 array[3]，i 加 1 后为 4, 交换后如下：
+第4次遍历时 `i = 3, j = 4`，`array[j] < array[high]` ,  且 `i != j `,  需要交换下标 3 和 4 的位置， 遍历后  `i = 4  j = 5`， 至此全部遍历完成；
 
 ```
-8		3		7	 6	12	 9
-				      i = 4
-		          j = 4
+|8  3  7	 6   12|		|9|
+low                   high
+                i
+                      j
 ```
 
-for循环结束， 然后交换 i = 4 和 high = 5 的位置， 交换后：
+最后交换 i 和 high 处元素
 
 ```
-8		3		7	 6	9	 12
+|8  3  7	 6   9|		  |12|
+low                   high
+                i
+                      j
 ```
 
-返回基准值的位置为4
+返回 i 下标 4
 
 
 
@@ -325,5 +351,4 @@ def partitionLomuto(array, low, high):
 [swift-algorithm-club](https://github.com/raywenderlich/swift-algorithm-club/tree/master/Quicksort)
 
 [快速排序](https://www.runoob.com/w3cnote/quick-sort-2.html)
-
 
