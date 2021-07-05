@@ -12,6 +12,7 @@ def bubble_sort(array):
             break
     return array
 
+
 def selection_sort(array):
     for i in range(len(array)):
         min = i
@@ -21,6 +22,7 @@ def selection_sort(array):
         if i != min:
             (array[i], array[min]) = (array[min], array[i])
     return array
+
 
 def insertion_sort(array):
     if (len(array) < 1):
@@ -32,6 +34,7 @@ def insertion_sort(array):
                 (array[i], array[end]) = (array[end], array[i])
     return array
 
+
 def shell_sort(array):
     count = len(array)
     if count < 1:
@@ -41,10 +44,12 @@ def shell_sort(array):
         for i in range(count):
             begin = i
             while (begin >= gap) and (array[begin - gap] > array[begin]):
-                (array[begin - gap], array[begin]) = (array[begin], array[begin - gap])
+                (array[begin - gap], array[begin]
+                 ) = (array[begin], array[begin - gap])
                 begin -= gap
         gap /= 2
     return array
+
 
 def heap_sort(array):
     build_heap(array)
@@ -55,27 +60,31 @@ def heap_sort(array):
         heap_shift(array, 0, size)
     return array
 
+
 def build_heap(array):
-    n = len(array)/2 - 1
+    n = len(array) / 2 - 1
     for i in range(n, -1, -1):
         heap_shift(array, i, len(array))
 
+
 def heap_shift(array, i, size):
     # 最小堆
-    leftChild = 2*i + 1
+    leftChild = 2 * i + 1
     rightChild = leftChild + 1
-    first = i
-    if leftChild < size and array[leftChild] < array[first]:
-        first = leftChild
-    if rightChild < size and array[rightChild] < array[first]:
-        first = rightChild
-    if first != i:
-        (array[i], array[first]) = (array[first], array[i])
-        heap_shift(array, first, size)
+    candidate = i
+    if leftChild < size and array[leftChild] < array[candidate]:
+        candidate = leftChild
+    if rightChild < size and array[rightChild] < array[candidate]:
+        candidate = rightChild
+    if candidate != i:
+        (array[i], array[candidate]) = (array[candidate], array[i])
+        heap_shift(array, candidate, size)
+
 
 def merge_sort(array):
     merge_up_to_down(array, 0, len(array) - 1)
     return array
+
 
 def merge_up_to_down(array, low, high):
     if (high <= low):
@@ -84,6 +93,7 @@ def merge_up_to_down(array, low, high):
     merge_up_to_down(array, low, mid)
     merge_up_to_down(array, mid + 1, high)
     merge(array, low, mid, high)
+
 
 def merge_down_to_up(array):
     size = 1
@@ -98,28 +108,38 @@ def merge_down_to_up(array):
         size += size
     return array
 
+
 def merge(array, low, mid, high):
+    """
+    merge array in: [low, high]
+    left range: [low, mid]
+    right range: [mid + 1, high]
+    """
+    # copy array
+    aux = array[0: high + 1]
+
+    # index point to left and right range
     left = low
     right = mid + 1
-    # copy array
-    aux = array[0 : high + 1]
     for i in range(low, high + 1):
-        if left > mid:
+        if left > mid:  # left range finished merge
             array[i] = aux[right]
             right += 1
-        elif right > high:
+        elif right > high:  # right range finished merge
             array[i] = aux[left]
             left += 1
-        elif aux[left] > aux[right]:
+        elif aux[left] > aux[right]:  # compare data left and right range
             array[i] = aux[right]
             right += 1
         else:
             array[i] = aux[left]
             left += 1
 
+
 def quick_sort(array):
     partition(array, 0, len(array) - 1)
     return array
+
 
 def partition(array, low, high):
     """
@@ -130,9 +150,9 @@ def partition(array, low, high):
 
     if (low >= high):
         return
-    l = low # 记录从前往后的扫描位置
-    r = high # 记录从后往前的扫描位置
-    pivot = array[l] # 基准值，选择待排序区间的第一个元素
+    l = low  # 记录从前往后的扫描位置
+    r = high  # 记录从后往前的扫描位置
+    pivot = array[l]  # 基准值，选择待排序区间的第一个元素
     # 每一轮, 先从后往前扫，在从前往后扫
     while (l < r):
         while (l < r and array[r] >= pivot):
@@ -145,16 +165,18 @@ def partition(array, low, high):
         if (l < r):
             array[r] = array[l]
             r -= 1
-    
+
     # 将基准值放入数组的l位
     array[l] = pivot
     # print l, array
     partition(array, low, l - 1)
     partition(array, l + 1, high)
 
+
 def quick_sort_lomuto(array):
     partitionLomuto(array, 0, len(array) - 1)
     return array
+
 
 def partitionLomuto(array, low, high):
     if low >= high:
@@ -164,11 +186,12 @@ def partitionLomuto(array, low, high):
     for j in range(low, high):
         if array[j] <= pivot:
             if (j != index):
-                array[j] , array[index] = (array[index], array[j])
+                array[j], array[index] = (array[index], array[j])
             index += 1
     (array[index], array[high]) = (array[high], array[index])
     partitionLomuto(array, low, index - 1)
     partitionLomuto(array, index + 1, high)
+
 
 def counting_sort(array):
     # find max value
@@ -176,7 +199,7 @@ def counting_sort(array):
     for element in array:
         if element > max:
             max = element
-    
+
     # initialized the countsArray
     countsArray = []
     for _ in range(0, max + 1):
@@ -185,7 +208,7 @@ def counting_sort(array):
     # calculate counts number and set value to countsArray
     for element in array:
         countsArray[element] += 1
-    
+
     index = 0
     for i in range(0, len(countsArray)):
         value = countsArray[i]
@@ -195,24 +218,26 @@ def counting_sort(array):
             value -= 1
     return array
 
+
 def radix_sort(array):
     max = array[0]
     for element in array:
         if element > max:
             max = element
-    
+
     divider = 1
     while divider <= max:
         array = _counting_sort(divider, array)
         divider *= 10
     return array
 
+
 def _counting_sort(divider, array):
     # inititalized counts array
     countsArray = []
     for _ in range(0, 10):
         countsArray.append(0)
-    
+
     for element in array:
         # caculate radix
         # 598 / 1 % 10 = 8
@@ -220,7 +245,7 @@ def _counting_sort(divider, array):
         # 598 / 100 % 10 = 5
         index = element / divider % 10
         countsArray[index] += 1
-    
+
     # sum the counts
     for i in range(1, len(countsArray)):
         countsArray[i] += countsArray[i - 1]
@@ -233,7 +258,7 @@ def _counting_sort(divider, array):
     while i >= 0:
         index = array[i] / divider % 10
         countsArray[index] -= 1
-        newArray[countsArray[index]]= array[i]
+        newArray[countsArray[index]] = array[i]
         i -= 1
 
     for index in range(0, len(array)):

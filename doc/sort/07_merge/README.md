@@ -35,6 +35,7 @@ static public func SortUpToDown<T: Comparable>(array: inout [T], _ orderCriteria
 }
 
 static private func Sort<T: Comparable>(array: inout [T], low: Int, high: Int, orderCriteria:(T, T) -> Bool) {
+ 		/// 排序范围： [low, high]
     guard high > low else {
         return
     }
@@ -47,12 +48,16 @@ static private func Sort<T: Comparable>(array: inout [T], low: Int, high: Int, o
     
 /// 原地归并的抽象方法
 static private func Merge<T: Comparable>(array: inout [T], low: Int, mid: Int, high: Int, orderCriteria: (T, T) -> Bool) {
-    var left = low
-    var right = mid + 1
+   /// 数组范围：[low, high]
+   /// 左侧范围: [low, mid]
+   /// 右侧范围: [mid + 1, high]
+    
     var aux = [T]()
     for k in 0 ... high {
         aux.append(array[k])
     }
+  	var left = low
+    var right = mid + 1
     for k in low ... high {
         if (left > mid) { // 左半部分元素取完
             array[k] = aux[right]
@@ -200,18 +205,25 @@ def merge_down_to_up(array):
     return array
 
 def merge(array, low, mid, high):
+    """
+    merge array in: [low, high]
+    left range: [low, mid]
+    right range: [mid + 1, high]
+    """
+    # copy array
+    aux = array[0: high + 1]
+
+    # index point to left and right range
     left = low
     right = mid + 1
-    # 拷贝high个元素
-    aux = array[0 : high + 1]
     for i in range(low, high + 1):
-        if left > mid: #左边元素处理完毕，添加右边元素
+        if left > mid:  # left range finished merge
             array[i] = aux[right]
             right += 1
-        elif right > high: # 右边元素处理完毕，添加左边元素
+        elif right > high:  # right range finished merge
             array[i] = aux[left]
             left += 1
-        elif aux[left] > aux[right]:
+        elif aux[left] > aux[right]:  # compare data left and right range
             array[i] = aux[right]
             right += 1
         else:

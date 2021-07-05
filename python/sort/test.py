@@ -3,6 +3,7 @@ import random
 import sort
 import tool
 
+
 def test_bubble_sort():
     print "\nbubble sort begin"
     count = random.randint(100, 1000)
@@ -14,8 +15,9 @@ def test_bubble_sort():
             print source
             print target
             print ""
-            assert(tool.list_is_ascend(target))   
+            assert(tool.list_is_ascend(target))
     print "bubble sort success in {0} times.\n".format(count)
+
 
 def test_selection_sort():
     print "\nselection sort begin"
@@ -28,8 +30,9 @@ def test_selection_sort():
             print source
             print target
             print ""
-            assert(tool.list_is_ascend(target))       
+            assert(tool.list_is_ascend(target))
     print "selection sort success in {0} times.\n".format(count)
+
 
 def test_insertion_sort():
     print "\ninsertion sort begin"
@@ -42,8 +45,9 @@ def test_insertion_sort():
             print source
             print target
             print ""
-            assert(tool.list_is_ascend(target))       
+            assert(tool.list_is_ascend(target))
     print "insertion sort success in {0} times.\n".format(count)
+
 
 def test_shell_sort():
     print "\nshell sort begin"
@@ -56,8 +60,9 @@ def test_shell_sort():
             print source
             print target
             print ""
-            assert(tool.list_is_ascend(target))        
+            assert(tool.list_is_ascend(target))
     print "shell sort success in {0} times.\n".format(count)
+
 
 def test_heap_sort():
     print "\nheap sort begin"
@@ -70,8 +75,9 @@ def test_heap_sort():
             print source
             print target
             print ""
-            assert(tool.list_is_descend(target))       
+            assert(tool.list_is_descend(target))
     print "heap sort success in {0} times.\n".format(count)
+
 
 def test_merge_sort_up_bottom():
     print "\nmerge sort up bottom begin"
@@ -84,8 +90,9 @@ def test_merge_sort_up_bottom():
             print source
             print target
             print ""
-            assert(tool.list_is_ascend(target))      
+            assert(tool.list_is_ascend(target))
     print "merge sort up bottom success in {0} times.\n".format(count)
+
 
 def test_merge_sort_bottom_up():
     print "\nmerge sort bottom up begin"
@@ -98,8 +105,9 @@ def test_merge_sort_bottom_up():
             print source
             print target
             print ""
-            assert(tool.list_is_ascend(target))       
+            assert(tool.list_is_ascend(target))
     print "merge sort bottom up success in {0} times.\n".format(count)
+
 
 def test_quick_sort():
     print "\nQuick sort test begin"
@@ -112,8 +120,9 @@ def test_quick_sort():
             print source
             print target
             print ""
-            assert(tool.list_is_ascend(target))       
+            assert(tool.list_is_ascend(target))
     print "Quick sort success in {0} times.\n".format(count)
+
 
 def test_quick_sort_lomuto():
     print "\nQuick sort lomuto test begin"
@@ -126,7 +135,7 @@ def test_quick_sort_lomuto():
             print source
             print target
             print ""
-            assert(tool.list_is_ascend(target))       
+            assert(tool.list_is_ascend(target))
     print "Quick sort lomuto success in {0} times.\n".format(count)
 
 
@@ -141,8 +150,9 @@ def test_counting_sort():
             print source
             print target
             print ""
-            assert(tool.list_is_ascend(target))       
+            assert(tool.list_is_ascend(target))
     print "Counting sort success in {0} times.\n".format(count)
+
 
 def test_radix_sort():
     print "\nRadix sort test begin"
@@ -155,8 +165,9 @@ def test_radix_sort():
             print source
             print target
             print ""
-            assert(tool.list_is_ascend(target))       
+            assert(tool.list_is_ascend(target))
     print "Radix sort success in {0} times.\n".format(count)
+
 
 test_bubble_sort()
 test_selection_sort()
