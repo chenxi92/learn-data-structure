@@ -99,9 +99,9 @@ def heap_shift(array, i):
 
 ### 性能
 
-平均时间复杂度: O (n log n)
+平均时间复杂度: O( n * log<sub>n</sub> )
 
-空间复杂度: O (n)
+空间复杂度: O( n )
 
 
 

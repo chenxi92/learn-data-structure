@@ -68,17 +68,17 @@ func bucketSort(_ array: inout [Int], _ bucketSize: Int) {
 }
 ```
 
-每个小桶内的插入排序，参考 [插入排序](./insertion-sort.md)
+每个小桶内的插入排序，参考 [插入排序](./../03_insertion/README.md)
 
 
 
 ### 性能
 
-最坏时间复杂度: O (n ^ 2)
+最坏时间复杂度: O( n^2^ )
 
-平均时间复杂度: O (n + k)
+平均时间复杂度: O( n + k )
 
-最坏空间复杂度: O (n * k)
+最坏空间复杂度: O( n * k )
 
 ### 参考
 

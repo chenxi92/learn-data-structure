@@ -93,7 +93,7 @@ def shell_sort(array):
 
 ### 性能
 
-时间复杂度：最坏时间复杂度 O(n long n)
+时间复杂度：最坏时间复杂度 O( n * log<sub>n</sub> )
 
 空间复杂度：O(n)
 
