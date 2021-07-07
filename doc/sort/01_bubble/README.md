@@ -60,7 +60,7 @@ def bubble_sort(array):
 
 ### 性能
 
-时间复杂度: O( n^2^ )
+时间复杂度: O( n<sup>2</sup> )
 
 空间复杂度: O( n )
 

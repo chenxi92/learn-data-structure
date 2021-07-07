@@ -74,7 +74,7 @@ func bucketSort(_ array: inout [Int], _ bucketSize: Int) {
 
 ### 性能
 
-最坏时间复杂度: O( n^2^ )
+最坏时间复杂度: O( n<sup>2</sup> )
 
 平均时间复杂度: O( n + k )
 

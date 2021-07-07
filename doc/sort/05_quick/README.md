@@ -405,7 +405,7 @@ def partitionLomuto(array, low, high):
 
 ### 性能
 
-最坏时间复杂度: O( n^2^ )
+最坏时间复杂度: O( n<sup>2</sup> )
 
 最优时间复杂度: O( n * log<sub>n</sub> )
 
