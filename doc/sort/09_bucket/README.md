@@ -1,6 +1,6 @@
-**桶排序（Bucket sort）**或所谓的**箱排序**，是一个[排序算法](https://zh.wikipedia.org/wiki/排序算法)，工作的原理是将[数组](https://zh.wikipedia.org/wiki/陣列)分到有限数量的桶里，每个桶再个别排序（有可能再使用别的[排序算法](https://zh.wikipedia.org/wiki/排序算法)或是以递归方式继续使用桶排序进行排序）。
+**桶排序（Bucket sort）**或所谓的**箱排序**，是一个[排序算法](https://zh.wikipedia.org/wiki/排序算法)，工作的原理是将[数组](https://zh.wikipedia.org/wiki/陣列)分到有限数量的桶里，每个桶再个别排序（有可能再使用别的 [排序算法](https://zh.wikipedia.org/wiki/排序算法) 或是以递归方式继续使用桶排序进行排序）。
 
-桶排序是[鸽巢排序](https://zh.wikipedia.org/wiki/鴿巢排序)的一种归纳结果。当要被排序的数组内的数值是均匀分配的时候，桶排序使用线性时间 O (n) 。但桶排序并不是[比较排序](https://zh.wikipedia.org/wiki/比较排序)，他不受到 O (n log n) 下限的影响。
+桶排序是 [鸽巢排序](https://zh.wikipedia.org/wiki/鴿巢排序) 的一种归纳结果。当要被排序的数组内的数值是均匀分配的时候，桶排序使用线性时间 O( n ) 。但桶排序并不是[比较排序](https://zh.wikipedia.org/wiki/比较排序)，不受到 O (n * log<sub>n</sub>) 下限的影响。
 
 
 
@@ -69,6 +69,41 @@ func bucketSort(_ array: inout [Int], _ bucketSize: Int) {
 ```
 
 每个小桶内的插入排序，参考 [插入排序](./../03_insertion/README.md)
+
+
+
+#### python
+
+```python
+def bucket_sort(array):
+    if len(array) <= 1:
+        return
+
+    maxValue = array[0]
+    minValue = array[0]
+    for value in array:
+        if value > maxValue:
+            maxValue = value
+        if value < minValue:
+            minValue = value
+
+    size = 10
+    count = (maxValue - minValue) / size + 1
+    buckets = [[] for _ in range(count)]
+    for value in array:
+        index = (value - minValue) / size
+        buckets[index].append(value)
+
+    sortedArray = []
+    for bucket in buckets:
+        if len(bucket) < 1:
+            continue
+        # 每个桶内数据单独排序
+        bucket = insert_sort(bucket)
+        for i in range(len(bucket)):
+            sortedArray.append(bucket[i])
+    return sortedArray
+```
 
 
 
