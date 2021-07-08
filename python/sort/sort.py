@@ -265,6 +265,35 @@ def _counting_sort(divider, array):
         array[index] = newArray[index]
     return array
 
+
+def bucket_sort(array):
+    if len(array) <= 1:
+        return
+
+    maxValue = array[0]
+    minValue = array[0]
+    for value in array:
+        if value > maxValue:
+            maxValue = value
+        if value < minValue:
+            minValue = value
+
+    size = 10
+    count = (maxValue - minValue) / size + 1
+    buckets = [[] for _ in range(count)]
+    for value in array:
+        index = (value - minValue) / size
+        buckets[index].append(value)
+
+    sortedArray = []
+    for bucket in buckets:
+        if len(bucket) < 1:
+            continue
+        bucket = insertion_sort(bucket)
+        for i in range(len(bucket)):
+            sortedArray.append(bucket[i])
+    return sortedArray
+
 # source = [126, 69, 593, 23, 6, 89, 54, 8]
 # print source
 # print radix_sort(source)
