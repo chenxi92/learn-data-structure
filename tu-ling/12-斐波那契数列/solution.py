@@ -20,7 +20,8 @@ def _recurse(array, num):
         return 1
     if array[num] != 0:
         return array[num]
-    return _recurse(array, num - 1) + _recurse(array, num - 2)
+    array[num] = _recurse(array, num - 1) + _recurse(array, num - 2)
+    return array[num]
 
 
 def calculate3(num):
@@ -37,7 +38,7 @@ def calculate3(num):
     return high
 
 
-num = 10
+num = 30
 print "calculate1 =", calculate1(num)
 print "calculate2 =", calculate2(num)
 print "calculate3 =", calculate3(num)

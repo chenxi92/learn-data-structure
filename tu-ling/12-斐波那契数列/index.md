@@ -52,7 +52,8 @@ def _recurse(array, num):
         return 1
     if array[num] != 0:
         return array[num]
-    return _recurse(array, num - 1) + _recurse(array, num - 2)
+    array[num] = _recurse(array, num - 1) + _recurse(array, num - 2)
+    return array[num]
 
 ```
 

@@ -16,7 +16,7 @@ def arrageCoinsSearch(n):
         mid = low + (high - low) / 2
         cost = mid * (mid + 1) / 2
         if cost == n:
-            return n
+            return mid
         elif cost > n:
             high = mid - 1
         else:

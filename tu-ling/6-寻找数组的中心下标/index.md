@@ -37,7 +37,7 @@ def pivotIndex(nums):
         if total == sum:
             return i
         sum -= nums[i]
-    return - 1
+    return -1
 
 
 nums = [1, 7, 3, 6, 5, 6]
