@@ -26,5 +26,36 @@ class Solution(object):
             k -= index * factorials[n - i]
         return ans
 
+    def getPermutation1(self, n, k):
+        """
+        :type n: int
+        :type k: int
+        :rtype: str
+        """
+        result = []
+        path = []
+        collections = list(range(1, n + 1))
+        used = {}
+        for i in collections:
+            used[i] = False
 
-print Solution().getPermutation(4, 14)
+        def backtrace(path, collections):
+            if n == len(path):
+                result.append(path[:])
+                return
+            for i in collections:
+                if used[i] is True:
+                    continue
+                path.append(str(i))
+                used[i] = True
+                backtrace(path, collections)
+                path.pop(len(path) - 1)
+                used[i] = False
+
+        backtrace(path, collections)
+        return "".join(result[k - 1])
+
+
+print Solution().getPermutation(8, 14)
+print Solution().getPermutation1(8, 14)
+
