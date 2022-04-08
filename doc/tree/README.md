@@ -1,4 +1,8 @@
-#### 基本概念
+# 树
+
+
+
+## 基本概念
 
 **树**（英语：tree）是一种 **抽象数据类型** 或是实现这种抽象数据类型的 **数据结构** ，用来模拟具 **有树状结构性质** 的数据集合。
 
@@ -16,7 +20,27 @@
 
 
 
-#### 树的种类
+**高度(Height)** : 节点到叶子节点的最长路径（边数）
+
+**深度(Depth)** : 根节点到这个节点所经历的边的个数
+
+**层数(Level)** : 节点的深度 + 1
+
+**树的高度**: 根节点的高度
+
+![tree-terms](./images/tree-terms.png)
+
+
+
+
+
+- 前序遍历：对于树中的任意节点，先打印这个节点，然后再打印它的左子树，最后打印它的右子树。
+- 中序遍历：对于树中的任意节点，先打印它的左子树，然后再打印它本身，最后打印它的右子树。
+- 后序遍历： 对于树中的任意节点，先打印它的左子树，然后再打印它的右子树，最后打印它本身。
+
+
+
+## 树的种类
 
 - 无序树：树中任意节点的子节点之间没有顺序关系，这种树称为无序树，也称为[自由树](https://zh.wikipedia.org/wiki/自由树)；
 
@@ -32,11 +56,11 @@
 
   
 
-#### 二叉树
+### 二叉树
 
 每个节点最多含有两个子树的树称为二叉树；
 
-##### 代码实现
+#### 代码实现
 
 ```swift
 public class BinaryNode<Element> {
@@ -50,7 +74,7 @@ public class BinaryNode<Element> {
 }
 
 extension BinaryNode {
-    /// 有序遍历
+    /// 中序遍历
     ///
     /// In-order traversal visit the nodes of a binary tree in the following order, starting from the root node
     /// - If the current node has a left child, recursively visit this child first
@@ -84,7 +108,7 @@ extension BinaryNode {
 
 
 
-#### 二叉搜索树
+### 二叉搜索树(Binary Search Tree)
 
 二叉搜索树满足下面2种基本原则:
 
@@ -93,7 +117,7 @@ extension BinaryNode {
 
 
 
-##### 代码实现
+#### 代码实现
 
 ```swift
 public class BinarySearchTree<Element: Comparable> {
@@ -208,11 +232,13 @@ extension BinarySearchTree {
 
 ![remove-3](./images/bst-remove-3.png)
 
-#### AVL 树
+### AVL 树
+
+二叉树中任意一个节点的左右子树的高度相差不能大于1。
 
 
 
-##### 代码实现
+#### 代码实现
 
 ```swift
 public class AVLNode<Element> {
@@ -456,7 +482,7 @@ AVL 平衡因子计算方式： 左子树高度 - 右子树高度
 
 ![avl tree 2](./images/avl-tree-2.png)
 
-#### Trie 树
+### Trie 树
 
 **trie**，又称**前缀树**或**字典树**，是一种有序树，用于保存关联数组，其中的键通常是字符串。
 
@@ -472,7 +498,7 @@ trie 类似下图所示:
 
 
 
-##### 代码实现
+#### 代码实现
 
 ```swift
 public class TrieNode<Key: Hashable> {
@@ -583,9 +609,11 @@ public extension Trie where CollectionType: RangeReplaceableCollection {
 
 
 
-#### 参考资料
+## 参考资料
 
 [树](https://zh.wikipedia.org/wiki/%E6%A0%91_(%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84))
 
 [Trie 树](https://zh.wikipedia.org/wiki/Trie)
+
+[数据结构与算法之美](https://time.geekbang.org/column/article/67856)
 
