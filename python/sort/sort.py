@@ -29,9 +29,9 @@ def insertion_sort(array):
         return array
     for i in range(1, len(array)):
         end = i
-        for i in range(end):
-            if (i < end) and array[end] < array[i]:
-                (array[i], array[end]) = (array[end], array[i])
+        for j in range(end):
+            if (j < end) and array[end] < array[j]:
+                (array[j], array[end]) = (array[end], array[j])
     return array
 
 
