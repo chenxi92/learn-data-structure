@@ -5,13 +5,47 @@ def bubble_sort(array):
         ordered = True
         end = len(array) - i - 1
         for j in range(end):
-            if j + 1 < len(array) and array[j] > array[j + 1]:
+            if array[j] > array[j + 1]:
                 (array[j], array[j + 1]) = (array[j + 1], array[j])
                 ordered = False
         if ordered is True:
             break
     return array
 
+def bubble_sort_1(array):
+    lastExchangeIndex = 0
+    sortBorder = len(array) - 1
+    for i in range(len(array)):
+        ordered = True
+        for j in range(sortBorder):
+            if array[j] > array[j + 1]:
+                array[j], array[j + 1] = array[j + 1], array[j]
+                ordered = False
+                lastExchangeIndex = j
+        sortBorder = lastExchangeIndex
+        if ordered is True:
+            break
+    return array
+
+def cocktail_sort(array):
+    for i in range(len(array)/2):
+        sorted = True
+        # sort from left to right
+        for j in range(i, len(array) - i - 1):
+            if array[j] > array[j + 1]:
+                array[j], array[j + 1] = array[j + 1], array[j]
+                sorted = False
+        if sorted:
+            break
+        sorted = True
+        # sort from right to left
+        for j in range(len(array) - i - 1, i, -1):
+            if array[j] < array[j - 1]:
+                array[j], array[j - 1] = array[j - 1], array[j]
+                sorted = False
+        if sorted:
+            break
+    return array
 
 def selection_sort(array):
     for i in range(len(array)):

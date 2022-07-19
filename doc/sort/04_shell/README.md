@@ -95,7 +95,7 @@ def shell_sort(array):
 
 时间复杂度：最坏时间复杂度 O( n * log<sub>n</sub> )
 
-空间复杂度：O(n)
+空间复杂度：O(1)
 
 
 

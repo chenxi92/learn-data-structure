@@ -18,6 +18,33 @@ def test_bubble_sort():
             assert(tool.list_is_ascend(target))
     print "bubble sort success in {0} times.\n".format(count)
 
+def test_bubble_sort_1():
+    print "\nbubble sort 1 begin"
+    count = random.randint(100, 1000)
+    for _ in range(count):
+        length = random.randint(5, 30)
+        source = tool.random_list(0, 100, length)
+        target = sort.bubble_sort_1(source)
+        if tool.list_is_ascend(target) is False:
+            print source
+            print target
+            print ""
+            assert(tool.list_is_ascend(target))
+    print "bubble sort 1 success in {0} times.\n".format(count)
+
+def test_cocktail_sort():
+    print "\ncocktail sort begin"
+    count = random.randint(100, 1000)
+    for _ in range(count):
+        length = random.randint(5, 30)
+        source = tool.random_list(0, 100, length)
+        target = sort.cocktail_sort(source)
+        if tool.list_is_ascend(target) is False:
+            print source
+            print target
+            print ""
+            assert(tool.list_is_ascend(target))
+    print "cocktail sort success in {0} times.\n".format(count)
 
 def test_selection_sort():
     print "\nselection sort begin"
@@ -170,6 +197,8 @@ def test_radix_sort():
 
 
 test_bubble_sort()
+test_bubble_sort_1()
+test_cocktail_sort()
 test_selection_sort()
 test_insertion_sort()
 test_shell_sort()
