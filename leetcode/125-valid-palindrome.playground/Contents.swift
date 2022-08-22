@@ -26,7 +26,7 @@ class Solution {
                 if c.asciiValue! >= 97 && c.asciiValue! <= 122 {
                     stack.append(c)
                 }
-            }   
+            }
         }
                 
         while stack.count >= 2  {
